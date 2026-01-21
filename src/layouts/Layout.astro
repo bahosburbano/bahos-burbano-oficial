@@ -1,0 +1,267 @@
+---
+// src/layouts/Layout.astro
+import '../styles/global.css';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+
+interface Props {
+  title: string;
+  description?: string; // Atributo dinámico para SEO
+  ogImage?: string;     // Imagen personalizada para compartir
+}
+
+const { 
+  title, 
+  description = "Firma legal orientada a la estructuración jurídica de asuntos complejos en el ámbito público y privado.",
+  ogImage = "/og-image.jpg" 
+} = Astro.props;
+
+// Generación dinámica de la URL oficial para evitar contenido duplicado
+const canonicalURL = new URL(Astro.url.pathname, "https://www.bahosburbano.com/");
+---
+
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <link rel="preload" href="/1.hero-home.webp" as="image" fetchpriority="high" />
+  <link rel="preload" href="/fonts/ClashDisplay-Variable.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+  <link rel="preload" href="/fonts/HankenGrotesk-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+  <link rel="preload" href="/fonts/EBGaramond-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+  <link rel="preload" href="/fonts/B612Mono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+  <title>{title} | Bahos & Burbano</title>
+  <meta name="title" content={`${title} | Bahos & Burbano`} />
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={`${title} | Bahos & Burbano`} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={canonicalURL} />
+  <meta property="twitter:title" content={`${title} | Bahos & Burbano`} />
+  <meta property="twitter:description" content={description} />
+  <meta property="twitter:image" content={ogImage} />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Attorney",
+      "name": "Bahos & Burbano",
+      "legalName": "Bahos & Burbano Abogados",
+      "url": "https://www.bahosburbano.com",
+      "logo": "https://www.bahosburbano.com/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+573136621779",
+        "contactType": "Legal Consultation",
+        "areaServed": "CO",
+        "availableLanguage": "Spanish"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Santiago de Cali",
+        "addressRegion": "Valle del Cauca",
+        "addressCountry": "CO"
+      }
+    }
+  </script>
+
+  <meta name="theme-color" content="#0C382E" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+</head>
+
+<body class="bg-brand-white text-brand-green-mineral antialiased selection:bg-[var(--color-oro-noble)]/30 selection:text-brand-green-mineral">
+    <a href="#main-content" class="sr-only-skip">Saltar al contenido principal</a>
+    
+    <Header role="banner" />
+
+    <main id="main-content" class="pt-28 md:pt-36" tabindex="-1" role="main">
+      <slot /> 
+    </main>
+
+    <Footer role="contentinfo" />
+</body>
+
+<style is:global>
+  /* --- TODA LA ESTÉTICA CSS SE MANTIENE INTACTA CONFORME A TU INSTRUCCIÓN --- */
+  
+  /* 1. REGISTRO DEL AMPERSAND (B612 MONO) */
+  @font-face {
+    font-family: 'AmpersandDrama';
+    src: url('/fonts/B612Mono-Regular.woff2') format('woff2');
+    unicode-range: U+0026; 
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* Jerarquía de Autoridad Visual */
+  h1 {
+    line-height: 1.0 !important; 
+    letter-spacing: -0.015em !important; 
+    font-weight: 700;
+    color: var(--color-bosque);
+    text-wrap: balance;
+  }
+
+  h2, h3, h4 {
+    line-height: 1.15 !important; 
+    letter-spacing: normal;
+    color: var(--color-bosque);
+    text-wrap: balance;
+  }
+
+  /* Registro de Fuentes */
+  @font-face {
+    font-family: 'ClashDisplay';
+    src: url('/fonts/ClashDisplay-Variable.woff2') format('woff2-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Hanken Grotesk';
+    src: url('/fonts/HankenGrotesk-VariableFont_wght.woff2') format('woff2-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'EB Garamond';
+    src: url('/fonts/EBGaramond-VariableFont_wght.woff2') format('woff2-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'B612 Mono';
+    src: url('/fonts/B612Mono-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* Variables y Base */
+  :root {
+    --color-base: #FFFFFF;
+    --color-bosque: #0C382E;
+    --color-oro-noble: #C9A668; 
+    --color-oro-tecnico: #8F6B29; 
+    --ease-boutique: cubic-bezier(0.16, 1, 0.3, 1);
+    font-size: 100%; 
+  }
+
+  html { 
+    scroll-behavior: smooth; 
+    background-color: #FFFFFF; 
+    color: #0C382E; 
+  }
+
+  body {
+    background-color: var(--color-base);
+    color: var(--color-bosque);
+    font-family: 'Hanken Grotesk', sans-serif; 
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Protección Estructural */
+  #logo-legal svg {
+    max-width: none !important;
+    flex-shrink: 0 !important;
+    vector-effect: non-scaling-stroke !important;
+  }
+
+  /* Efectos Seda */
+  .transition-seda {
+    transition: all 1.2s var(--ease-boutique);
+  }
+
+  .label-museo {
+    font-family: 'ClashDisplay', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--color-oro-noble);
+    letter-spacing: 0.6em; 
+    opacity: 0.9;
+  }
+
+  .reveal-text {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-text {
+      opacity: 0.60; 
+      transform: translateY(15px); 
+      animation: revealCinematic 1.2s var(--ease-boutique) forwards;
+    }
+  }
+
+  @keyframes revealCinematic {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar-track { background: var(--color-base); }
+  ::-webkit-scrollbar-thumb { background: var(--color-bosque); border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-oro-noble); }
+
+  /* Accesibilidad */
+  .sr-only-skip {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--color-bosque);
+    color: var(--color-oro-noble);
+    padding: 1rem 2rem;
+    z-index: 9999;
+    text-transform: uppercase;
+    font-family: 'ClashDisplay', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    transition: top 0.4s ease;
+  }
+
+  .sr-only-skip:focus {
+    top: 0;
+    outline: 2px solid var(--color-oro-noble);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-oro-noble);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  #main-content:focus {
+    outline: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .transition-seda, .reveal-text {
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>

@@ -1,0 +1,326 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Metadata de Autoridad Digital
+const lastUpdate = "05 de enero de 2026";
+const readingTime = "5 minutos";
+// HASH VERIFICADO - POLÍTICA DE SEGURIDAD
+const legalHash = "f833b3111202772c1b4f1b5520f314a769a071b0b30b7c3bea3bcfe9704c453";
+
+// Estructura Institucional: Títulos 100% literales con Ampersand Protocol
+const sections = [
+  { id: "objetivo", title: "OBJETIVO & COMPROMISO" },
+  { id: "marco-normativo", title: "MARCO NORMATIVO" },
+  { id: "zero-trust", title: "ARQUITECTURA DE SEGURIDAD: MODELO \"ZERO TRUST\"" },
+  { id: "medidas-tecnicas", title: "MEDIDAS TÉCNICAS DE PROTECCIÓN" },
+  { id: "ciclo-vida", title: "SEGURIDAD EN EL CICLO DE VIDA DE LOS DATOS" },
+  { id: "gobernanza-ia", title: "GOBERNANZA DE INTELIGENCIA ARTIFICIAL & NUEVAS TECNOLOGÍAS" },
+  { id: "resiliencia", title: "RESILIENCIA & CONTINUIDAD OPERATIVA" },
+  { id: "confidencialidad", title: "8. CLÁUSULA DE CONFIDENCIALIDAD SUPREMA" },
+  { id: "vigencia", title: "9. VIGENCIA & ACTUALIZACIÓN" },
+];
+---
+
+<Layout title="Seguridad de la Información | Bahos & Burbano">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-[var(--color-oro-noble)] focus:text-[var(--color-bosque)] focus:p-4">
+    Saltar al contenido principal
+  </a>
+
+  <main class="bg-white min-h-screen" id="main-content" role="main">
+    
+    <section class="relative pt-32 pb-20 bg-white" aria-labelledby="policy-title">
+      <div class="max-w-[1400px] mx-auto px-8 md:px-28 w-full text-left">
+        <div class="reveal-sharp">
+          <h1 id="policy-title" class="font-['ClashDisplay'] text-[42px] md:text-[68px] font-bold text-[#0C382E] tracking-[0.08em] leading-tight uppercase">
+            POLÍTICA DE SEGURIDAD <br /> DE LA INFORMACIÓN
+          </h1>
+          <div class="axial-stela-main mt-7" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-32 px-8 md:px-28 relative">
+      <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[25%_75%] gap-16 lg:gap-24 items-start">
+
+        <aside class="hidden lg:block sticky top-32 h-fit reveal-sharp space-y-12">
+          <div class="space-y-2 border-l-2 border-[#B8944F]/50 pl-4">
+             <p class="font-['Hanken_Grotesk'] text-[10px] uppercase tracking-[0.2em] text-[#3d5c55]">
+              Última revisión: <span class="text-[#B8944F] font-bold">{lastUpdate}</span>
+            </p>
+             <p class="font-['Hanken_Grotesk'] text-[10px] uppercase tracking-[0.2em] text-[#3d5c55]">
+              Tiempo de lectura: <span class="font-medium">{readingTime}</span>
+            </p>
+          </div>
+
+          <nav class="scroll-spy-nav" aria-label="Navegación de secciones de seguridad">
+            <ul class="space-y-6" role="list">
+              {sections.map((section) => (
+                <li role="listitem">
+                  <a href={`#${section.id}`} class="nav-link group flex items-center outline-none focus-visible:ring-1 focus-visible:ring-[#B8944F]">
+                    <span class="nav-indicator w-[2px] h-0 bg-[#B8944F] mr-4 transition-all duration-500 group-hover:h-4 group-[.active]:h-6"></span>
+                    <span class="font-['Hanken_Grotesk'] text-[11px] uppercase tracking-[0.15em] text-[#546964] group-hover:text-[#B8944F] group-[.active]:text-[#0C382E] group-[.active]:font-bold transition-all duration-500 leading-relaxed">
+                      {section.title.split('&').map((chunk, i, arr) => (
+                        <>
+                          {chunk}
+                          {i < arr.length - 1 && <span class="bb-amp mx-1">&</span>}
+                        </>
+                      ))}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
+
+        <article class="reveal-sharp relative">
+          <div class="flex justify-end mb-12">
+            <a 
+              href="/docs/Bahos-Burbano-Politica-Seguridad-Informacion-V1-2026.pdf" 
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visualizar política de seguridad en PDF (abre en nueva pestaña)"
+              class="group flex items-center gap-3 font-['Hanken_Grotesk'] text-[10px] uppercase tracking-[0.2em] text-[#3d5c55] hover:text-[#B8944F] transition-all duration-300 border border-[#0C382E]/10 px-4 py-3 hover:border-[#B8944F]/50 outline-none focus-visible:ring-1 focus-visible:ring-[#B8944F]"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.644m17.592.644a1.012 1.012 0 0 1 0-.644M12 18.75a6.75 6.75 0 1 0 0-13.5 6.75 6.75 0 0 0 0 13.5z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+              </svg>
+              Visualizar en PDF
+            </a>
+          </div>
+
+          <div class="space-y-24 legal-content">
+            <section id="objetivo" class="scroll-section" aria-labelledby="sec-objetivo">
+              <h2 id="sec-objetivo" class="legal-heading">OBJETIVO <span class="bb-amp">&</span> COMPROMISO</h2>
+              <div class="legal-body space-y-4">
+                <p>La presente política establece las directrices para garantizar la Confidencialidad, Integridad y Disponibilidad de los activos de información de Bahos <span class="bb-amp">&</span> Burbano. Como firma de práctica digital, asumimos la seguridad como un componente indisociable del secreto profesional y la excelencia jurídica.</p>
+              </div>
+            </section>
+
+            <section id="marco-normativo" class="scroll-section" aria-labelledby="sec-marco">
+              <h2 id="sec-marco" class="legal-heading">MARCO NORMATIVO</h2>
+              <p class="legal-body">
+                Esta política se fundamenta en la Constitución Política de Colombia, la Ley 1581 de 2012, el Decreto 1074 de 2015, y se alinea con los estándares internacionales ISO/IEC 27001:2022 y las directrices de ciberseguridad para servicios legales vigentes.
+              </p>
+            </section>
+
+            <section id="zero-trust" class="scroll-section" aria-labelledby="sec-zero">
+              <h2 id="sec-zero" class="legal-heading">ARQUITECTURA DE SEGURIDAD: MODELO "ZERO TRUST"</h2>
+              <p class="legal-body mb-6">La Firma adopta un modelo de Confianza Cero (Zero Trust), bajo el cual no existe la confianza implícita por ubicación de red o propiedad del dispositivo. Todo acceso a la información está sujeto a:</p>
+              <ul class="legal-list" role="list">
+                <li role="listitem"><span class="font-bold text-[#0C382E]">Autenticación Robusta:</span> Uso obligatorio de factores de autenticación multifactor (MFA) de grado bancario.</li>
+                <li role="listitem"><span class="font-bold text-[#0C382E]">Privilegio Mínimo:</span> El acceso se concede estrictamente sobre la base de la necesidad de saber para el cumplimiento de la labor jurídica.</li>
+              </ul>
+            </section>
+
+            <section id="medidas-tecnicas" class="scroll-section" aria-labelledby="sec-medidas">
+              <h2 id="sec-medidas" class="legal-heading">MEDIDAS TÉCNICAS DE PROTECCIÓN</h2>
+              <p class="legal-body mb-8">Para mitigar riesgos de interceptación, alteración o pérdida, la Firma implementa:</p>
+              <ul class="legal-list" role="list">
+                <li role="listitem"><span class="font-bold text-[#0C382E]">Cifrado Avanzado:</span> Toda información en tránsito y en reposo es protegida mediante algoritmos de cifrado asimétrico de última generación (AES-256 o superior).</li>
+                <li role="listitem"><span class="font-bold text-[#0C382E]">Arquitectura Desacoplada:</span> El ecosistema digital de la Firma opera sobre infraestructuras de computación en la nube distribuidas, eliminando puntos únicos de fallo y garantizando alta disponibilidad.</li>
+                <li role="listitem"><span class="font-bold text-[#0C382E]">Integridad Verificada:</span> Los documentos oficiales emitidos por la Firma cuentan con firmas digitales o identificadores criptográficos que permiten verificar su autenticidad y detectar cualquier alteración posterior.</li>
+              </ul>
+            </section>
+
+            <section id="ciclo-vida" class="scroll-section" aria-labelledby="sec-ciclo">
+              <h2 id="sec-ciclo" class="legal-heading">SEGURIDAD EN EL CICLO DE VIDA DE LOS DATOS</h2>
+              <p class="legal-body mb-8">La gestión de la información sigue un proceso de Seguridad desde el Diseño:</p>
+              <ul class="legal-list" role="list">
+                <li role="listitem"><span class="font-bold text-[#0C382E]">Captura Segura:</span> Canales de comunicación con cifrado de extremo a extremo.</li>
+                <li role="listitem"><span class="font-bold text-[#0C382E]">Almacenamiento Resiliente:</span> Uso de repositorios en la nube con redundancia geográfica.</li>
+                <li role="listitem"><span class="font-bold text-[#0C382E]">Despliegue Controlado:</span> Los cambios en nuestra infraestructura digital se realizan mediante procesos automatizados que incluyen pruebas de seguridad previas a su puesta en producción.</li>
+              </ul>
+            </section>
+
+            <section id="gobernanza-ia" class="scroll-section" aria-labelledby="sec-ia">
+              <h2 id="sec-ia" class="legal-heading">GOBERNANZA DE INTELIGENCIA ARTIFICIAL <span class="bb-amp">&</span> NUEVAS TECNOLOGÍAS</h2>
+              <p class="legal-body mb-8">En el uso de herramientas de procesamiento avanzado e IA, la Firma garantiza:</p>
+              <ul class="legal-list" role="list">
+                <li role="listitem"><span class="font-bold text-[#0C382E]">No Reutilización de Datos:</span> No se emplean datos de clientes para el entrenamiento de modelos de IA públicos.</li>
+                <li role="listitem"><span class="font-bold text-[#0C382E]">Soberanía de Información:</span> Los datos permanecen bajo el control y jurisdicción establecidos en los acuerdos de nivel de servicio (SLA) de seguridad.</li>
+              </ul>
+            </section>
+
+            <section id="resiliencia" class="scroll-section" aria-labelledby="sec-resiliencia">
+              <h2 id="sec-resiliencia" class="legal-heading">RESILIENCIA <span class="bb-amp">&</span> CONTINUIDAD OPERATIVA</h2>
+              <p class="legal-body mb-8">Ante incidentes de seguridad o desastres tecnológicos, la Firma garantiza la continuidad mediante:</p>
+              <ul class="legal-list" role="list">
+                <li role="listitem"><span class="font-bold text-[#0C382E]">Protocolos de Respuesta Inmediata:</span> Capacidad de restauración de servicios en tiempos inferiores a los estándares del mercado.</li>
+                <li role="listitem"><span class="font-bold text-[#0C382E]">Backups Inmutables:</span> Copias de seguridad protegidas contra ataques de borrado o cifrado malintencionado (Ransomware).</li>
+              </ul>
+            </section>
+
+            <section id="confidencialidad" class="scroll-section" aria-labelledby="sec-conf">
+              <h2 id="sec-conf" class="legal-heading">8. CLÁUSULA DE CONFIDENCIALIDAD SUPREMA</h2>
+              <div class="bg-[#0C382E]/[0.03] p-10 border-l-4 border-[#B8944F] mb-12">
+                <p class="font-['ClashDisplay'] text-[18px] md:text-[22px] font-bold text-[#0C382E] leading-relaxed uppercase tracking-[0.05em] text-center">
+                  "TODA INFORMACIÓN SUMINISTRADA SERÁ TRATADA BAJO ESTRICTOS PROTOCOLOS DE CONFIDENCIALIDAD Y NUESTRA POLÍTICA DE SEGURIDAD DE LA INFORMACIÓN."
+                </p>
+              </div>
+              <p class="legal-body italic">
+                El incumplimiento de las directrices aquí contenidas por parte de colaboradores o terceros dará lugar a las acciones legales, civiles y penales correspondientes, así como a las sanciones ante el Consejo Superior de la Judicatura y/o la Comisión Nacional de Disciplina Judicial si a ello hubiere lugar.
+              </p>
+            </section>
+
+            <section id="vigencia" class="scroll-section" aria-labelledby="sec-vigencia">
+              <h2 id="sec-vigencia" class="legal-heading">9. VIGENCIA <span class="bb-amp">&</span> ACTUALIZACIÓN</h2>
+              <p class="legal-body">
+                Esta política es dinámica y se actualiza periódicamente para responder a la evolución del panorama de amenazas cibernéticas. Última revisión: 05 de enero de 2026.
+              </p>
+            </section>
+            
+            <section class="pt-12 mt-20 border-t border-[#0C382E]/10" aria-label="Certificación de Integridad Documental">
+               <div class="bg-[#0C382E]/[0.04] p-8 border-l-2 border-[#B8944F]/50">
+                 <p class="font-['Hanken_Grotesk'] text-[10px] tracking-[0.3em] uppercase text-[#B8944F] font-bold mb-3">
+                   Certificación de Integridad Digital (SHA-256)
+                 </p>
+                 <code class="font-['B612_Mono'] text-[11px] text-[#0C382E]/90 uppercase tracking-widest break-all leading-relaxed">
+                   {legalHash}
+                 </code>
+               </div>
+            </section>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* --- PROTOCOLO DEL AMPERSAND (B612 MONO) --- */
+  .bb-amp {
+    font-family: 'B612 Mono', monospace;
+    font-size: 1.1em;
+    font-weight: 400;
+    margin: 0 0.15em;
+    opacity: 0.9;
+    display: inline-block;
+  }
+
+  .axial-stela-main {
+    width: 240px;
+    height: 1px;
+    background: linear-gradient(to right, #B8944F, transparent);
+  }
+
+  .legal-heading {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #0C382E;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  
+  .legal-heading::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(to right, #B8944F, transparent);
+  }
+
+  .legal-subheading {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #0C382E;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .legal-body {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(12, 56, 46, 0.9);
+    text-wrap: pretty;
+  }
+
+  .legal-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  .legal-list li {
+    position: relative;
+    padding-left: 2rem;
+    padding-bottom: 1.2rem;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(12, 56, 46, 0.85);
+  }
+
+  .legal-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.8em;
+    width: 20px;
+    height: 1px;
+    background: linear-gradient(to right, #B8944F, transparent);
+  }
+
+  .legal-link {
+    color: #B8944F;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: all 0.3s ease;
+  }
+
+  .reveal-sharp {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: reveal-up 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    will-change: transform, opacity;
+  }
+  @keyframes reveal-up { to { opacity: 1; transform: translateY(0); } }
+
+  .scroll-section { scroll-margin-top: 120px; }
+
+  @media (max-width: 768px) {
+    .legal-heading { font-size: 22px; }
+    .legal-body { font-size: 15px; line-height: 1.9; }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.scroll-section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            link.removeAttribute('aria-current');
+            link.querySelector('.nav-indicator')?.classList.remove('h-6');
+          });
+          
+          const activeLink = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+          if (activeLink) {
+            activeLink.classList.add('active');
+            activeLink.setAttribute('aria-current', 'page');
+            activeLink.querySelector('.nav-indicator')?.classList.add('h-6');
+          }
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => { observer.observe(section); });
+  });
+</script>

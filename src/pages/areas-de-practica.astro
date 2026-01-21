@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Configuración de nodos con rutas sanitizadas según tu explorador de archivos
+const expertiseNodes = [
+  { 
+    id: '01',
+    title: 'Derecho Público & Gobernanza Institucional', 
+    slug: 'publico-y-gobernanza' 
+  },
+  { 
+    id: '02',
+    title: 'Corporativo & Control Regulatorio', 
+    slug: 'corporativo-y-control' 
+  },
+  { 
+    id: '03',
+    title: 'Derecho Sanitario & Gestión Institucional', 
+    slug: 'sanitario-y-gestion' 
+  },
+  { 
+    id: '04',
+    title: 'Derecho Transnacional & Estructuración Internacional', 
+    slug: 'transnacional-y-estructuracion' 
+  }
+];
+---
+
+<Layout title="Nodos de Intervención | Bahos & Burbano">
+  <main class="bg-brand-white min-h-screen pt-40 pb-24">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+      
+      <header class="mb-32">
+        <div class="flex items-center gap-6 mb-8">
+          <span class="font-['Hanken_Grotesk'] text-[11px] uppercase tracking-[0.6em] text-brand-gold-champagne font-bold">
+            Expertise & Rigor Técnico
+          </span>
+          <div class="stela-axial-sober"></div>
+        </div>
+        
+        <h1 class="font-['ClashDisplay'] font-bold text-6xl lg:text-9xl text-brand-green-mineral uppercase leading-[0.8] tracking-tighter fade-in">
+          Nodos de <br/> Intervención
+        </h1>
+      </header>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 border-y border-brand-green-mineral/10">
+        {expertiseNodes.map((node) => (
+          <a 
+            href={`/areas/${node.slug}`} 
+            class="group relative bg-brand-white border-brand-green-mineral/5 border p-12 lg:p-20 flex flex-col justify-between aspect-square lg:aspect-[16/10] hover:bg-brand-green-mineral transition-colors duration-700 overflow-hidden"
+          >
+            <span class="font-['Hanken_Grotesk'] text-[10px] uppercase tracking-[0.5em] text-brand-gold-champagne font-bold group-hover:text-brand-white transition-colors">
+              NODE {node.id}
+            </span>
+            
+            <div class="space-y-8">
+              <h3 class="font-['ClashDisplay'] font-bold text-3xl lg:text-5xl text-brand-green-mineral uppercase leading-tight group-hover:text-brand-white transition-colors duration-500">
+                {node.title.split('&').map((chunk, i, arr) => (
+                  <>
+                    {chunk}
+                    {i < arr.length - 1 && (
+                      <span 
+                        style="font-family: 'B612 Mono', monospace;" 
+                        class="text-[0.85em] mx-2 relative top-[1px] text-brand-gold-champagne group-hover:text-brand-white/80 transition-colors"
+                      >
+                        &
+                      </span>
+                    )}
+                  </>
+                ))}
+              </h3>
+              <div class="w-12 group-hover:w-full h-px bg-brand-gold-champagne transition-all duration-700"></div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: reveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @keyframes reveal {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .stela-axial-sober {
+    height: 1px;
+    flex-grow: 1;
+    background: linear-gradient(90deg, transparent 0%, rgba(184, 148, 79, 0.4) 50%, transparent 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: growStela 2.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    will-change: transform;
+  }
+
+  @keyframes growStela {
+    to { transform: scaleX(1); }
+  }
+</style>

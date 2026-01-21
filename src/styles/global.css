@@ -1,0 +1,47 @@
+/* src/styles/global.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 1. VARIABLES DE MARCA: Identidad "Crystal & Emerald" */
+:root {
+  /* IDENTIDAD CROMÁTICA */
+  --color-base: #FFFFFF;
+  --color-bosque: #0C382E;
+  --color-oro: #C9A668;
+
+  /* ARQUITECTURA TIPOGRÁFICA (Sincronizada con image_850f86.png) */
+  --font-serif: 'EB Garamond', serif;
+  --font-clash: 'ClashDisplay-Light', sans-serif;
+  --font-body: 'Hanken Grotesk', sans-serif;
+
+  /* FLUIDEZ (SEDA) */
+  --ease-boutique: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* 2. LUZ & PROTECCIÓN: Configuración del Lienzo */
+body {
+  background-color: var(--color-base);
+  color: var(--color-bosque);
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  /* Optimización de renderizado de lujo */
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 3. AMPARO DEL LOGO: Protege el centrado y proporciones contra compresión */
+#logo-legal svg {
+  max-width: none !important; 
+  flex-shrink: 0 !important;     
+  width: auto;
+}
+
+/* 4. FILTRO BOUTIQUE: Claridad sin perder la profundidad del verde */
+img {
+  filter: brightness(1.02) contrast(1.01);
+  transition: filter 0.8s var(--ease-boutique);
+}

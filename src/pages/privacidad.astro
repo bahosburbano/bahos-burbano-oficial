@@ -1,0 +1,356 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Metadata de Autoridad Digital
+const lastUpdate = "19 de enero de 2026";
+const readingTime = "6 minutos";
+// HASH VERIFICADO - POLÍTICA DE PRIVACIDAD
+const legalHash = "711dd4a6af53573f33f823839b3aa163522e96a447c2df531455222d075455c9";
+
+// Estructura Institucional
+const sections = [
+  { id: "responsable", title: "IDENTIFICACIÓN DEL RESPONSABLE" },
+  { id: "marco-legal", title: "MARCO LEGAL & ALCANCE" },
+  { id: "principios", title: "PRINCIPIOS RECTORES" },
+  { id: "finalidades", title: "FINALIDADES DEL TRATAMIENTO" },
+  { id: "sensibles-menores", title: "TRATAMIENTO DE DATOS SENSIBLES & DE MENORES" },
+  { id: "derechos", title: "DERECHOS DE LOS TITULARES" },
+  { id: "procedimiento", title: "PROCEDIMIENTO PARA EL EJERCICIO DE DERECHOS (HABEAS DATA)" },
+  { id: "transferencia", title: "TRANSFERENCIA & TRANSMISIÓN INTERNACIONAL" },
+  { id: "seguridad", title: "SEGURIDAD DE LA INFORMACIÓN" },
+  { id: "vigencia", title: "VIGENCIA & ACTUALIZACIÓN" },
+];
+---
+
+<Layout title="Política de Privacidad | Bahos & Burbano">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-[var(--color-oro-noble)] focus:text-[var(--color-bosque)] focus:p-4">
+    Saltar al contenido principal
+  </a>
+
+  <main class="bg-white min-h-screen" id="main-content" role="main">
+    
+    <section class="relative pt-32 pb-20 bg-white" aria-labelledby="policy-title">
+      <div class="max-w-[1400px] mx-auto px-8 md:px-28 w-full text-left">
+        <div class="reveal-sharp">
+          <h1 id="policy-title" class="font-['ClashDisplay'] text-[42px] md:text-[68px] font-bold text-[#0C382E] tracking-[0.08em] leading-tight uppercase">
+            POLÍTICA DE TRATAMIENTO <br /> DE DATOS PERSONALES
+          </h1>
+          <div class="axial-stela-main mt-7" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-32 px-8 md:px-28 relative">
+      <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[25%_75%] gap-16 lg:gap-24 items-start">
+
+        <aside class="hidden lg:block sticky top-32 h-fit reveal-sharp space-y-12">
+          <div class="space-y-2 border-l-2 border-[#B8944F]/50 pl-4">
+             <p class="font-['Hanken_Grotesk'] text-[10px] uppercase tracking-[0.2em] text-[#3d5c55]">
+              Vigente a partir del: <span class="text-[#B8944F] font-bold">{lastUpdate}</span>
+            </p>
+             <p class="font-['Hanken_Grotesk'] text-[10px] uppercase tracking-[0.2em] text-[#3d5c55]">
+              Tiempo de lectura: <span class="font-medium">{readingTime}</span>
+            </p>
+          </div>
+
+          <nav class="scroll-spy-nav" aria-label="Navegación de secciones legales">
+            <ul class="space-y-6" role="list">
+              {sections.map((section) => (
+                <li role="listitem">
+                  <a href={`#${section.id}`} class="nav-link group flex items-center outline-none focus-visible:ring-1 focus-visible:ring-[#B8944F]">
+                    <span class="nav-indicator w-[2px] h-0 bg-[#B8944F] mr-4 transition-all duration-500 group-hover:h-4 group-[.active]:h-6"></span>
+                    <span class="font-['Hanken_Grotesk'] text-[11px] uppercase tracking-[0.15em] text-[#546964] group-hover:text-[#B8944F] group-[.active]:text-[#0C382E] group-[.active]:font-bold transition-all duration-500 leading-relaxed">
+                      {section.title.split('&').map((chunk, i, arr) => (
+                        <span key={i}>
+                          {chunk}
+                          {i < arr.length - 1 && <span class="bb-amp mx-1">&</span>}
+                        </span>
+                      ))}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
+
+        <article class="reveal-sharp relative">
+          <div class="flex justify-end mb-12">
+            <a 
+              href="/docs/Bahos-Burbano-Politica-Tratamiento-Datos-V1-2026.pdf" 
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visualizar en PDF"
+              class="group flex items-center gap-3 font-['Hanken_Grotesk'] text-[10px] uppercase tracking-[0.2em] text-[#3d5c55] hover:text-[#B8944F] transition-all duration-300 border border-[#0C382E]/10 px-4 py-3 hover:border-[#B8944F]/50 outline-none focus-visible:ring-1 focus-visible:ring-[#B8944F]"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.644m17.592.644a1.012 1.012 0 0 1 0-.644M12 18.75a6.75 6.75 0 1 0 0-13.5 6.75 6.75 0 0 0 0 13.5z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+              </svg>
+              Visualizar en PDF
+            </a>
+          </div>
+
+          <div class="space-y-24 legal-content">
+            <section id="responsable" class="scroll-section" aria-labelledby="sec-responsable">
+              <h2 id="sec-responsable" class="legal-heading">IDENTIFICACIÓN DEL RESPONSABLE</h2>
+              <div class="legal-body space-y-4">
+                <p><span class="font-bold text-[#0C382E]">Razón Social:</span> Bahos <span class="bb-amp">&</span> Burbano</p>
+                <p><span class="font-bold text-[#0C382E]">Domicilio:</span> Santiago de Cali, Valle del Cauca, Colombia</p>
+                <p><span class="font-bold text-[#0C382E]">Correo Electrónico:</span> info@bahosburbano.com</p>
+                <p><span class="font-bold text-[#0C382E]">Canal de Atención:</span> <a href="/contactenos" class="legal-link">“CONTÁCTENOS”</a></p>
+              </div>
+            </section>
+
+            <section id="marco-legal" class="scroll-section" aria-labelledby="sec-marco">
+              <h2 id="sec-marco" class="legal-heading">MARCO LEGAL <span class="bb-amp">&</span> ALCANCE</h2>
+              <p class="legal-body">
+                Esta política se rige por la Constitución Política de Colombia, la Ley 1581 de 2012, el Decreto 1074 de 2015 y las demás normas que las modifiquen o adicionen. Aplica a todos los datos personales recolectados, almacenados y tratados por Bahos <span class="bb-amp">&</span> Burbano en el ejercicio de su práctica jurídica, ya sea de forma física o a través de sus plataformas digitales.
+              </p>
+            </section>
+
+            <section id="principios" class="scroll-section" aria-labelledby="sec-principios">
+              <h2 id="sec-principios" class="legal-heading">PRINCIPIOS RECTORES</h2>
+              <p class="legal-body mb-6">La Firma aplicará de manera integral los siguientes principios:</p>
+              <ul class="legal-list" role="list">
+                <li role="listitem"><span class="font-bold text-[#0C382E]">Principio de Licitud:</span> El tratamiento se realizará conforme a las disposiciones legales.</li>
+                <li role="listitem"><span class="font-bold text-[#0C382E]">Principio de Finalidad:</span> El tratamiento debe obedecer a una finalidad legítima informada al Titular.</li>
+                <li role="listitem"><span class="font-bold text-[#0C382E]">Principio de Libertad:</span> Solo se tratarán datos con el consentimiento previo, expreso e informado.</li>
+                <li role="listitem"><span class="font-bold text-[#0C382E]">Principio de Transparencia:</span> Se garantiza el derecho del Titular a obtener información sobre sus datos.</li>
+                <li role="listitem"><span class="font-bold text-[#0C382E]">Principio de Seguridad y Confidencialidad:</span> Implementamos medidas técnicas y administrativas para evitar la adulteración, pérdida o acceso no autorizado.</li>
+              </ul>
+            </section>
+
+            <section id="finalidades" class="scroll-section" aria-labelledby="sec-finalidades">
+              <h2 id="sec-finalidades" class="legal-heading">FINALIDADES DEL TRATAMIENTO</h2>
+              <p class="legal-body mb-8">Bahos <span class="bb-amp">&</span> Burbano tratará los datos personales para las siguientes finalidades principales:</p>
+              <div class="space-y-10">
+                <div>
+                  <h3 class="legal-subheading">Con relación a Clientes <span class="bb-amp">&</span> Prospectos:</h3>
+                  <ul class="legal-list" role="list">
+                    <li role="listitem">Prestación de servicios de consultoría, representación legal y defensa jurídica en áreas de derecho público y privado.</li>
+                    <li role="listitem">Gestión administrativa para la vinculación de clientes y cumplimiento de normas SARLAFT/PADM.</li>
+                    <li role="listitem">Envío de boletines jurídicos (newsletters), actualizaciones legales y comunicaciones sobre eventos de la firma.</li>
+                    <li role="listitem">Uso de herramientas de analítica y automatización para la optimización de la estrategia jurídica.</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 class="legal-subheading">Con relación a Talento Humano <span class="bb-amp">&</span> Proveedores:</h3>
+                  <ul class="legal-list" role="list">
+                    <li role="listitem">Gestión de procesos de selección, contratación y cumplimiento de obligaciones laborales.</li>
+                    <li role="listitem">Verificación de antecedentes y referencias profesionales.</li>
+                    <li role="listitem">Coordinación de pagos, facturación y gestión contable.</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <section id="sensibles-menores" class="scroll-section" aria-labelledby="sec-sensibles">
+              <h2 id="sec-sensibles" class="legal-heading">TRATAMIENTO DE DATOS SENSIBLES <span class="bb-amp">&</span> DE MENORES</h2>
+              <p class="legal-body">
+                La Firma solo tratará datos sensibles (ej. datos biométricos, pertenencia a sindicatos, salud en casos de litigio) cuando sea estrictamente necesario para la defensa judicial o cuando exista mandato legal. En estos casos, el Titular no está obligado a autorizar su tratamiento, salvo excepciones legales. Respecto a menores de edad, se respetará siempre el interés superior y sus derechos fundamentales, contando con la autorización de sus representantes legales.
+              </p>
+            </section>
+
+            <section id="derechos" class="scroll-section" aria-labelledby="sec-derechos">
+              <h2 id="sec-derechos" class="legal-heading">DERECHOS DE LOS TITULARES</h2>
+              <p class="legal-body mb-6">De acuerdo con la ley, usted como titular tiene derecho a:</p>
+              <ul class="legal-list grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4" role="list">
+                <li role="listitem">Conocer, actualizar y rectificar sus datos personales.</li>
+                <li role="listitem">Solicitar prueba de la autorización otorgada.</li>
+                <li role="listitem">Ser informado respecto del uso que se le ha dado a sus datos.</li>
+                <li role="listitem">Revocar la autorización o solicitar la supresión del dato cuando no se respeten los principios, derechos y garantías constitucionales y legales.</li>
+                <li role="listitem">Acceder en forma gratuita a sus datos personales tratados.</li>
+              </ul>
+            </section>
+
+            <section id="procedimiento" class="scroll-section" aria-labelledby="sec-habeas">
+              <h2 id="sec-habeas" class="legal-heading">PROCEDIMIENTO PARA EL EJERCICIO DE DERECHOS (HABEAS DATA)</h2>
+              <p class="legal-body mb-8">
+                Los titulares podrán presentar consultas o reclamos a través del correo electrónico de contacto o mediante el enlace sutil de WhatsApp dispuesto en nuestra sección de contacto.
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-[#0C382E]/[0.03] p-6 border-l-2 border-[#B8944F]/60">
+                  <h3 class="legal-subheading mb-2">Consultas</h3>
+                  <p class="legal-body text-sm">Serán atendidas en un término máximo de <span class="font-bold">diez (10) días hábiles</span>.</p>
+                </div>
+                <div class="bg-[#0C382E]/[0.03] p-6 border-l-2 border-[#B8944F]/60">
+                  <h3 class="legal-subheading mb-2">Reclamos</h3>
+                  <p class="legal-body text-sm">Si el titular considera que la información debe ser corregida o actualizada, podrá presentar un reclamo que será resuelto en <span class="font-bold">quince (15) días hábiles</span>.</p>
+                </div>
+              </div>
+            </section>
+
+            <section id="transferencia" class="scroll-section" aria-labelledby="sec-transferencia">
+              <h2 id="sec-transferencia" class="legal-heading">TRANSFERENCIA <span class="bb-amp">&</span> TRANSMISIÓN INTERNACIONAL</h2>
+              <p class="legal-body">
+                En el marco de nuestra práctica digital, la Firma podrá utilizar servicios de computación en la nube o herramientas colaborativas cuyos servidores se encuentren fuera de Colombia. Bahos <span class="bb-amp">&</span> Burbano se asegura de que dichos países cuenten con niveles adecuados de protección de datos según los estándares de la Superintendencia de Industria y Comercio.
+              </p>
+            </section>
+
+            <section id="seguridad" class="scroll-section" aria-labelledby="sec-seguridad">
+              <h2 id="sec-seguridad" class="legal-heading">SEGURIDAD DE LA INFORMACIÓN</h2>
+              <p class="legal-body">
+                En Bahos <span class="bb-amp">&</span> Burbano, aplicamos estándares de seguridad digital avanzados, incluyendo cifrado de datos, protocolos de acceso restringido y copias de seguridad redundantes para garantizar la integridad de la información confidencial de nuestros clientes.
+              </p>
+            </section>
+
+            <section id="vigencia" class="scroll-section" aria-labelledby="sec-vigencia">
+              <h2 id="sec-vigencia" class="legal-heading">VIGENCIA & ACTUALIZACIÓN</h2>
+              <p class="legal-body">
+                La presente política entra en vigor a partir de su publicación. Bahos & Burbano se reserva el derecho de modificarla para adaptarla a novedades legislativas o jurisprudenciales. Cualquier cambio sustancial será comunicado a través de nuestro sitio web oficial.
+              </p>
+            </section>
+            
+            <section class="pt-12 mt-20 border-t border-[#0C382E]/10" aria-label="Certificación de Integridad Documental">
+               <div class="bg-[#0C382E]/[0.03] p-8 border-l-2 border-[#B8944F]/60">
+                 <p class="font-['Hanken_Grotesk'] text-[10px] tracking-[0.3em] uppercase text-[#B8944F] font-bold mb-3">
+                   Certificación de Integridad Digital (SHA-256)
+                 </p>
+                 <code class="font-['B612_Mono'] text-[11px] text-[#0C382E]/90 uppercase tracking-widest break-all leading-relaxed">
+                   {legalHash}
+                 </code>
+               </div>
+            </section>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .bb-amp {
+    font-family: 'B612 Mono', monospace;
+    font-size: 1.1em;
+    font-weight: 400;
+    margin: 0 0.15em;
+    opacity: 0.9;
+    display: inline-block;
+  }
+
+  .axial-stela-main {
+    width: 240px;
+    height: 1px;
+    background: linear-gradient(to right, #B8944F, transparent);
+  }
+
+  .legal-heading {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #0C382E;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  
+  .legal-heading::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(to right, #B8944F, transparent);
+  }
+
+  .legal-subheading {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #0C382E;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .legal-body {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(12, 56, 46, 0.9);
+    text-wrap: pretty;
+  }
+
+  .legal-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  .legal-list li {
+    position: relative;
+    padding-left: 2rem;
+    padding-bottom: 1.2rem;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(12, 56, 46, 0.85);
+  }
+
+  .legal-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.8em;
+    width: 20px;
+    height: 1px;
+    background: linear-gradient(to right, #B8944F, transparent);
+  }
+
+  .legal-link {
+    color: #B8944F;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: all 0.3s ease;
+  }
+
+  .reveal-sharp {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: reveal-up 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    will-change: transform, opacity;
+  }
+  @keyframes reveal-up { to { opacity: 1; transform: translateY(0); } }
+
+  .scroll-section { scroll-margin-top: 120px; }
+
+  @media (max-width: 768px) {
+    .legal-heading { font-size: 20px; }
+    .legal-body { font-size: 15px; line-height: 1.9; }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.scroll-section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            link.removeAttribute('aria-current');
+            link.querySelector('.nav-indicator')?.classList.remove('h-6');
+          });
+          
+          const activeLink = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+          if (activeLink) {
+            activeLink.classList.add('active');
+            activeLink.setAttribute('aria-current', 'page');
+            activeLink.querySelector('.nav-indicator')?.classList.add('h-6');
+          }
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => { observer.observe(section); });
+  });
+</script>

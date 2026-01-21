@@ -1,0 +1,27 @@
+---
+/* src/pages/talento.astro */
+import Layout from '../layouts/Layout.astro';
+import GridEquipo from '../components/equipo/GridEquipo.astro';
+---
+
+<Layout title="Nuestro Equipo">
+  <main>
+    <GridEquipo />
+  </main>
+</Layout>
+
+<script is:inline>
+  window.addEventListener('load', () => {
+    if (window.location.hash === '#equipo') {
+      setTimeout(() => {
+        const equipoSection = document.getElementById('equipo');
+        if (equipoSection) {
+          equipoSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }, 300);
+    }
+  });
+</script>

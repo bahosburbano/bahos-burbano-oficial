@@ -1,0 +1,239 @@
+---
+/* AreasPractica.astro - Calibración Quirúrgica: Accesibilidad & Mobile Elite */
+---
+
+<section id="AreasPractica" class="scroll-mt-32 relative z-10 bg-white">
+  <div class="max-w-[1440px] mx-auto px-7 md:px-16 lg:px-28 pt-24 pb-20 md:pt-40 md:pb-32">
+    
+    <span class="label-museo-centered observer-element opacity-0">
+      ÁREAS DE PRÁCTICA
+    </span>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-20 md:gap-y-32">
+      
+      <a href="/areas/publico-y-gobernanza" class="area-item group observer-element opacity-0" aria-label="Explorar área de Derecho Público y Gobernanza Institucional">
+        <div class="image-wrapper">
+          <img src="/3.publico.webp" alt="Fachada institucional representando el Derecho Público" class="area-photo" loading="lazy" />
+        </div>
+        <div class="content-under">
+          <h3 class="area-name">
+            DERECHO PÚBLICO <span class="ampersand-mono">&</span> GOBERNANZA INSTITUCIONAL
+          </h3>
+          <div class="cta-wrapper">
+            <span class="read-more-box">
+              LEER MÁS 
+              <svg viewBox="0 0 32 16" class="arrow-svg-stylized" fill="none" aria-hidden="true">
+                <path d="M0 8H30M30 8L22 1M30 8L22 15" stroke="currentColor" stroke-width="1.2" stroke-linecap="square"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/areas/corporativo-y-control" class="area-item group observer-element opacity-0" aria-label="Explorar área de Derecho Corporativo y Control Regulatorio">
+        <div class="image-wrapper">
+          <img src="/4.corporativo.webp" alt="Estructura moderna representando el Derecho Corporativo" class="area-photo" loading="lazy" />
+        </div>
+        <div class="content-under">
+          <h3 class="area-name">
+            DERECHO CORPORATIVO <span class="ampersand-mono">&</span> CONTROL REGULATORIO
+          </h3>
+          <div class="cta-wrapper">
+            <span class="read-more-box">
+              LEER MÁS 
+              <svg viewBox="0 0 32 16" class="arrow-svg-stylized" fill="none" aria-hidden="true">
+                <path d="M0 8H30M30 8L22 1M30 8L22 15" stroke="currentColor" stroke-width="1.2" stroke-linecap="square"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/areas/sanitario-y-responsabilidad" class="area-item group observer-element opacity-0" aria-label="Explorar área de Derecho Sanitario y Responsabilidad Médica">
+        <div class="image-wrapper">
+          <img src="/5.medico.webp" alt="Representación de Derecho Sanitario" class="area-photo" loading="lazy" />
+        </div>
+        <div class="content-under">
+          <h3 class="area-name">
+            DERECHO SANITARIO <span class="ampersand-mono">&</span> RESPONSABILIDAD MÉDICA
+          </h3>
+          <div class="cta-wrapper">
+            <span class="read-more-box">
+              LEER MÁS 
+              <svg viewBox="0 0 32 16" class="arrow-svg-stylized" fill="none" aria-hidden="true">
+                <path d="M0 8H30M30 8L22 1M30 8L22 15" stroke="currentColor" stroke-width="1.2" stroke-linecap="square"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/areas/internacional-y-movilidad" class="area-item group observer-element opacity-0" aria-label="Explorar área de Derecho Internacional y Movilidad Jurídica">
+        <div class="image-wrapper">
+          <img src="/6.migratorio.webp" alt="Conexiones representando Derecho Internacional" class="area-photo" loading="lazy" />
+        </div>
+        <div class="content-under">
+          <h3 class="area-name">
+            DERECHO INTERNACIONAL <span class="ampersand-mono">&</span> MOVILIDAD JURÍDICA
+          </h3>
+          <div class="cta-wrapper">
+            <span class="read-more-box">
+              LEER MÁS 
+              <svg viewBox="0 0 32 16" class="arrow-svg-stylized" fill="none" aria-hidden="true">
+                <path d="M0 8H30M30 8L22 1M30 8L22 15" stroke="currentColor" stroke-width="1.2" stroke-linecap="square"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.observer-element').forEach(el => observer.observe(el));
+</script>
+
+<style>
+  /* 1. IDENTIDAD Y TIPOGRAFÍA */
+  .label-museo-centered {
+    color: var(--color-oro-tecnico); /* Oro técnico para accesibilidad visual */
+    font-size: 12px;
+    letter-spacing: 0.8em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 6rem;
+    display: block;
+    text-align: center;
+  }
+
+  .area-item { 
+    display: flex; 
+    flex-direction: column; 
+    text-decoration: none; 
+    outline: none;
+    cursor: pointer;
+  }
+
+  .area-name {
+    font-weight: 800;
+    font-size: 11.5px;
+    color: var(--color-bosque);
+    letter-spacing: 0.35em;
+    text-align: center;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .ampersand-mono {
+    font-family: 'B612 Mono', monospace;
+    font-size: 1.1em;
+    padding: 0 0.3rem;
+  }
+
+  /* 2. CONTENEDOR DE IMAGEN (Symmetry & Performance) */
+  .image-wrapper {
+    width: 100%;
+    aspect-ratio: 3 / 1.1; /* Calibración para un look más panorámico editorial */
+    overflow: hidden;
+    margin-bottom: 2rem;
+    background: #FAFAFA;
+  }
+
+  .area-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) brightness(0.95);
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+  }
+
+  .area-item:hover .area-photo,
+  .area-item:focus-visible .area-photo {
+    filter: grayscale(0%) brightness(1);
+    transform: scale(1.05);
+  }
+
+  /* 3. BLOQUE 'LEER MÁS' (Higiene de Foco) */
+  .content-under { display: flex; flex-direction: column; position: relative; }
+  .cta-wrapper { display: flex; justify-content: flex-end; width: 100%; }
+
+  .read-more-box {
+    font-family: 'B612 Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--color-oro-tecnico);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 1.2rem 0.6rem 2.2rem;
+    position: relative;
+    z-index: 1;
+    transition: color 0.4s ease;
+  }
+
+  .read-more-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 6px;
+    height: 100%;
+    background-color: var(--color-bosque);
+    z-index: -1;
+    transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .area-item:hover .read-more-box,
+  .area-item:focus-visible .read-more-box { color: white; }
+  .area-item:hover .read-more-box::before,
+  .area-item:focus-visible .read-more-box::before { width: 100%; }
+
+  .area-item:focus-visible {
+    outline: 2px solid var(--color-oro-noble);
+    outline-offset: 12px;
+  }
+
+  .arrow-svg-stylized { width: 32px; height: 12px; transition: transform 0.4s ease; }
+  .area-item:hover .arrow-svg-stylized { transform: translateX(8px); }
+
+  /* 4. ANIMACIONES (EFECTO SEDA) */
+  .observer-element {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0); /* Glide de 40px para elegancia */
+    will-change: transform, opacity;
+  }
+
+  .observer-element.is-visible {
+    animation: revealSeda 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes revealSeda {
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
+  }
+
+  /* 5. OPTIMIZACIÓN MÓVIL AL DETALLE */
+  @media (max-width: 1024px) {
+    .image-wrapper { aspect-ratio: 16 / 9; }
+    .area-name { font-size: 10.5px; letter-spacing: 0.25em; padding: 0 1rem; }
+    .label-museo-centered { font-size: 10px; letter-spacing: 0.4em; margin-bottom: 4rem; }
+    .read-more-box { font-size: 8.5px; }
+    .area-item { gap: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .observer-element { opacity: 1 !important; transform: none !important; animation: none !important; }
+  }
+</style>

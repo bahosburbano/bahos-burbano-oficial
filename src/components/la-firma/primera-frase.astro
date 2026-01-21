@@ -1,0 +1,66 @@
+---
+/* aforismo-autoridad.astro */
+---
+
+<section class="relative h-[25vh] flex items-center justify-center bg-brand-white overflow-hidden">
+  
+  <div 
+    id="silk-container"
+    class="w-[90%] md:w-[84%] h-[70%] flex items-center justify-center bg-transparent transition-all duration-[1500ms] ease-[cubic-bezier(0.23,1,0.32,1)] cursor-default border border-brand-green-mineral/5"
+  >
+    <div class="max-w-[1200px] mx-auto px-8 text-center">
+      <p 
+        id="silk-text"
+        class="font-['ClashDisplay'] font-bold text-[20px] md:text-[30px] text-brand-green-mineral leading-tight tracking-[-0.02em] [word-spacing:0.18em] transition-all duration-[1500ms] ease-[cubic-bezier(0.23,1,0.32,1)] text-pretty"
+      >
+        "La autoridad jurídica nace de la precisión con la que se estructura la decisión"
+      </p>
+    </div>
+  </div>
+
+</section>
+
+<script>
+  const container = document.querySelector('#silk-container');
+  const text = document.querySelector('#silk-text');
+
+  const observerOptions = {
+    root: null,
+    threshold: 0.5
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // ACTIVAR SEDA: Inversión de color contenida
+        container.classList.add('bg-brand-green-mineral');
+        container.classList.remove('bg-transparent');
+        text.classList.add('text-brand-white');
+        text.classList.remove('text-brand-green-mineral');
+      } else {
+        // REVERSA DE SEDA
+        container.classList.add('bg-transparent');
+        container.classList.remove('bg-brand-green-mineral');
+        text.classList.add('text-brand-green-mineral');
+        text.classList.remove('text-brand-white');
+      }
+    });
+  }, observerOptions);
+
+  if (container) observer.observe(container);
+</script>
+
+<style>
+  /* Refinamiento de la transición al pasar el mouse */
+  #silk-container:hover {
+    background-color: #0C382E !important;
+  }
+  #silk-container:hover p {
+    color: #FFFFFF !important;
+  }
+
+  /* Suavizado para evitar el parpadeo de bordes en la negrilla */
+  p {
+    -webkit-font-smoothing: antialiased;
+  }
+</style>

@@ -1,0 +1,152 @@
+---
+/* ArquitecturaInstitucional.astro - Calibración: Estela de Conexión y Tensión Visual */
+---
+
+<section 
+  id="arquitectura-institucional" 
+  class="relative bg-white py-32 md:py-56 overflow-hidden scroll-mt-24"
+  aria-labelledby="arch-title"
+>
+  <div class="max-w-[1440px] mx-auto px-8 md:px-28">
+    
+    <div class="mb-20 md:mb-32 flex flex-col md:flex-row md:items-center justify-between gap-8 observer-element-arquitectura opacity-0">
+      
+      <div class="w-full md:w-auto">
+        <h2 id="arch-title" class="font-['ClashDisplay'] font-bold text-[38px] md:text-[68px] text-[var(--color-bosque)] leading-[1.1] md:leading-[1.05] tracking-[-0.02em] antialiased">
+          Arquitectura<br class="hidden md:block" /> Institucional
+        </h2>
+      </div>
+
+      <div class="hidden md:block flex-grow h-[1.5px] axial-separator-arch mx-12" aria-hidden="true"></div>
+
+      <div class="w-full md:w-auto text-right">
+        <span class="pillar-label-museum whitespace-nowrap">
+          Pilares
+        </span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-24 lg:gap-32">
+      {[
+        {
+          title: 'Autoría Técnica',
+          desc: 'Responsabilidad directa. El núcleo intelectual es diseñado por los socios, sin intermediación técnica.'
+        },
+        {
+          title: 'Intervención Transversal',
+          desc: 'Estructura ágil de élite que trasciende fronteras territoriales para actuar donde la decisión es crítica.'
+        },
+        {
+          title: 'Rigor Constitucional',
+          desc: 'Blindaje institucional mediante la Norma Superior como herramienta operativa de alta precisión.'
+        }
+      ].map((item, i) => (
+        <div 
+          class="flex flex-col items-start text-left observer-element-arquitectura opacity-0" 
+          style={`transition-delay: ${0.4 + (i * 0.2)}s`}
+        >
+          <h3 class="font-['ClashDisplay'] text-[var(--color-bosque)] text-[20px] md:text-[22px] font-bold tracking-tight whitespace-nowrap mb-6 antialiased">
+            {item.title}
+          </h3>
+          
+          <div class="axial-h-trail-pillar mb-8" aria-hidden="true"></div>
+          
+          <p class="font-['Hanken_Grotesk'] text-[17px] md:text-[18px] text-[var(--color-bosque)] leading-relaxed font-normal opacity-100 antialiased">
+            {item.desc}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <div class="flex flex-col items-center mt-20 md:mt-32 observer-element-arquitectura opacity-0" style="transition-delay: 1.2s;">
+      <div class="closing-stela-vertical-arch" aria-hidden="true"></div>
+      <p class="final-phrase-arch antialiased">
+        La autoridad jurídica nace de la precisión con la que se estructura la decisión
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<script is:inline>
+  {
+    const options = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+    const observerArch = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observerArch.unobserve(entry.target);
+        }
+      });
+    }, options);
+
+    document.querySelectorAll('.observer-element-arquitectura').forEach(el => observerArch.observe(el));
+  }
+</script>
+
+<style>
+  /* --- SISTEMA DE ESTELAS --- */
+  .axial-separator-arch {
+    background: linear-gradient(to right, rgba(184, 148, 79, 0) 0%, var(--color-oro-noble) 50%, rgba(184, 148, 79, 0) 100%);
+    width: 0; opacity: 0;
+    transition: width 2.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.5s ease-out;
+    transition-delay: 0.6s;
+    will-change: width;
+  }
+  .is-visible .axial-separator-arch { width: 100%; opacity: 0.6; }
+
+  .axial-h-trail-pillar {
+    height: 1.5px; width: 0;
+    background: linear-gradient(to right, var(--color-oro-noble) 0%, rgba(184, 148, 79, 0) 100%);
+    transition: width 2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: 1s;
+  }
+  .is-visible .axial-h-trail-pillar { width: 120px; }
+
+  /* AJUSTE: Estela vertical alargada a 130px para mayor tensión visual */
+  .closing-stela-vertical-arch {
+    width: 1px; height: 0;
+    background: linear-gradient(to bottom, transparent, var(--color-oro-noble) 50%, transparent);
+    transition: height 2.4s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-bottom: 2.5rem;
+  }
+  .is-visible .closing-stela-vertical-arch { height: 130px; }
+
+  .pillar-label-museum {
+    font-size: 12px;
+    color: var(--color-oro-tecnico);
+    text-transform: uppercase;
+    letter-spacing: 0.8em; font-weight: 700;
+  }
+
+  .final-phrase-arch {
+    font-family: 'ClashDisplay', sans-serif;
+    color: var(--color-bosque);
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    text-align: center;
+    max-width: 650px;
+    line-height: 1.5;
+  }
+
+  .observer-element-arquitectura {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+    transition: opacity 2.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 2.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+  }
+
+  .observer-element-arquitectura.is-visible {
+    opacity: 1; transform: translate3d(0, 0, 0);
+  }
+
+  @media (max-width: 768px) {
+    .pillar-label-museum { font-size: 11px; letter-spacing: 0.4em; }
+    /* En móvil reducimos la estela para no empujar el texto fuera del viewport */
+    .is-visible .closing-stela-vertical-arch { height: 80px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .observer-element-arquitectura, .axial-separator-arch { transition: none !important; opacity: 1 !important; transform: none !important; }
+  }
+</style>

@@ -1,0 +1,116 @@
+---
+// src/components/Footer.astro
+const currentYear = 2026;
+
+const navegacion = [
+  { name: 'LA FIRMA', slug: 'la-firma' },
+  { name: 'ÁREAS DE PRÁCTICA', slug: '/#AreasPractica' }, 
+  { name: 'NUESTRO EQUIPO', slug: 'talento' },
+  { name: 'CONTÁCTENOS', slug: 'contactenos' }
+];
+
+const legalCreditos = [
+  { name: 'TRATAMIENTO DE DATOS', slug: 'privacidad' },
+  { name: 'SEGURIDAD INFORMÁTICA', slug: 'seguridad' },
+  { name: 'EXENCIÓN LEGAL', slug: 'exencion' },
+  { name: 'CRÉDITOS', slug: 'creditos' }
+];
+---
+
+<footer class="bg-white py-20" role="contentinfo">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-20 mb-20">
+
+      <div class="flex flex-col items-center md:items-start">
+        <div class="inline-flex flex-col items-center md:items-start mb-6">
+          <div class="flex items-baseline text-[var(--color-bosque)] mb-3">
+            <span class="font-clash font-semibold text-[24px] leading-none tracking-[0.25em]">Bahos</span>
+            <span class="font-mono font-bold text-[24px] leading-none mx-2">&</span>
+            <span class="font-clash font-semibold text-[24px] leading-none tracking-[0.25em]">Burbano</span>
+          </div>
+          <p 
+            class="text-[var(--color-oro-tecnico)] text-[10px] uppercase tracking-[0.525em] font-medium w-full text-center md:text-left antialiased"
+            aria-label="Descriptor de firma: Derecho, Empresa y Estado"
+          >
+            DERECHO | EMPRESA | ESTADO
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-12">
+        <div>
+          <h3 class="text-[11px] tracking-[0.3em] uppercase text-[var(--color-oro-tecnico)] mb-8 font-bold whitespace-nowrap">NAVEGACIÓN</h3>
+          <ul class="space-y-4">
+            {navegacion.map((item) => (
+              <li>
+                <a 
+                  href={item.slug} 
+                  aria-label={`Ir a ${item.name}`}
+                  class="text-[11px] uppercase tracking-[0.2em] text-[var(--color-bosque)]/80 hover:text-[var(--color-oro-noble)] transition-all duration-500 font-medium block py-1"
+                >
+                  {item.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+         <h3 class="text-[11px] tracking-[0.3em] uppercase text-[var(--color-oro-tecnico)] mb-8 font-bold whitespace-nowrap">
+           LEGAL <span class="font-mono text-[12px] mx-1 opacity-80">&</span> CRÉDITOS
+         </h3>
+          <ul class="space-y-4">
+            {legalCreditos.map((item) => (
+              <li>
+                <a 
+                  href={`/${item.slug}`} 
+                  aria-label={`Leer sobre ${item.name}`}
+                  class="text-[11px] uppercase tracking-[0.2em] text-[var(--color-bosque)]/80 hover:text-[var(--color-oro-noble)] transition-all duration-500 font-normal block py-1"
+                >
+                  {item.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-12 flex flex-col md:flex-row justify-between items-center gap-12">
+      <div class="flex flex-wrap justify-center md:justify-start gap-8 md:gap-12 items-center">
+        {['BOGOTÁ', 'CALI', 'POPAYÁN'].map((city) => (
+          <div class="flex items-center gap-4 group">
+            <span class="w-[1px] h-[14px] bg-gradient-to-b from-transparent via-[var(--color-oro-noble)] to-transparent opacity-40 group-hover:opacity-100 transition-opacity"></span>
+            <span class="text-[10px] tracking-[0.4em] uppercase text-[var(--color-bosque)]/60 font-medium cursor-default selection:bg-transparent">{city}</span>
+          </div>
+        ))}
+      </div>
+      
+      <div class="text-right">
+        <p class="text-[12px] tracking-[0.1em] text-[var(--color-bosque)]/70 flex items-baseline justify-end font-normal">
+          © {currentYear} <span class="font-clash ml-2 tracking-[0.1em] font-normal text-[var(--color-bosque)]">Bahos</span> 
+          <span class="font-mono mx-1.5 text-[11px] font-normal">&</span> 
+          <span class="font-clash tracking-[0.1em] font-normal text-[var(--color-bosque)]">Burbano</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style is:global>
+  .font-clash { font-family: 'ClashDisplay', sans-serif !important; }
+  .font-mono { font-family: 'B612 Mono', monospace !important; }
+
+  /* AJUSTE MÓVIL: Corrección de selector y propiedad CSS pura */
+  @media (max-width: 640px) {
+    footer p[aria-label="Descriptor de firma: Derecho, Empresa y Estado"] {
+      font-size: 9px !important; 
+      letter-spacing: 0.42em !important; 
+      width: 100%;
+      max-width: 280px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+</style>

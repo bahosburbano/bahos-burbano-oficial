@@ -1,0 +1,79 @@
+---
+// src/components/SubHero.astro
+---
+
+<section class="relative py-32 md:py-48 px-6 flex items-center justify-center overflow-hidden brand-section-bg">
+  <div class="max-w-6xl mx-auto text-center">
+    
+    {/* Usamos 'reveal-clean' para evitar el borroso del Layout */}
+    <div class="reveal-clean">
+      <h2 class="text-balance leading-[1.4]">
+        <span class="unified-text">
+          Continuidad, trazabilidad y coordinación jurídica permanente,
+        </span>
+        
+        <span class="unified-text highlight-gold">
+          sin barreras territoriales
+        </span>
+      </h2>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* 1. FONDO: Verde Mineral */
+  .brand-section-bg {
+    background-color: var(--color-bosque);
+  }
+
+  /* 2. TEXTO UNIFICADO: Sin negrilla y más grande */
+  .unified-text {
+    display: inline; /* Para que fluya como una sola frase si hay espacio */
+    font-family: 'EB Garamond', serif;
+    
+    /* CIRUGÍA: Eliminamos negrilla (400 es el peso normal) */
+    font-weight: 400; 
+    font-style: normal;
+    color: var(--color-base); /* Blanco */
+    
+    /* AIRE: Kerning elegante */
+    letter-spacing: 0.015em;
+    
+    /* TAMAÑO: Aumentado 2 puntos (de 3.8rem a 4.2rem) */
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+  }
+
+  /* 3. DESTACADO: Mismo tamaño, solo cambia el estilo y color */
+  .highlight-gold {
+    font-style: italic;
+    color: var(--color-oro);
+    margin-left: 0.3em; /* Espacio sutil entre la coma y la frase dorada */
+  }
+
+  /* 4. ANIMACIÓN NITIDA: Sin rastro de blur */
+  .reveal-clean {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: none !important; /* BLOQUEO DE BORROSO */
+    animation: revealFluid 2.2s var(--ease-boutique) forwards;
+  }
+
+  @keyframes revealFluid {
+    to { 
+      opacity: 1; 
+      transform: translateY(0);
+      filter: none !important;
+    }
+  }
+
+  /* Ajustes para móviles */
+  @media (max-width: 768px) {
+    .unified-text { 
+      font-size: 2.2rem; 
+      display: block; /* En móvil sí las separamos para mejor lectura */
+      margin-bottom: 1rem;
+    }
+    .highlight-gold { margin-left: 0; }
+  }
+</style>

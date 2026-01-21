@@ -1,0 +1,14 @@
+# Permitir a los buscadores principales
+User-agent: *
+Allow: /
+
+# Bloquear bots de auditorías SEO masivas (Ahorro de recursos)
+User-agent: AhrefsBot
+Disallow: /
+User-agent: MJ12bot
+Disallow: /
+User-agent: SemrushBot
+Disallow: /
+
+# Ruta del Mapa del Sitio
+Sitemap: https://www.bahosburbano.com/sitemap-index.xml

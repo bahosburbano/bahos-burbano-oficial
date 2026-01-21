@@ -1,0 +1,181 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+// IDENTIDAD INSTITUCIONAL: MAYÚSCULAS SOSTENIDAS (Texto Íntegro)
+const titlePart1 = "DERECHO INTERNACIONAL"; 
+const titlePart2 = "MOVILIDAD";
+const titlePart3 = "JURÍDICA";
+
+const relatedAreas = [
+  { name: "Derecho Público", href: "/areas/publico-y-gobernanza" },
+  { name: "Derecho Corporativo", href: "/areas/corporativo-y-control" },
+  { name: "Derecho Sanitario", href: "/areas/sanitario-y-responsabilidad" }
+];
+---
+
+<Layout title={`${titlePart1} & ${titlePart2} | Bahos & Burbano`}>
+  <main class="bg-white min-h-screen relative overflow-hidden antialiased">
+    
+    <div class="max-w-[1440px] mx-auto px-8 md:px-28 pb-24 relative z-20 pt-16 md:pt-24">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-[minmax(280px,32%)_1fr] gap-16 lg:gap-24 items-start">
+        
+        <aside class="observer-element-area space-y-20 lg:sticky lg:top-10 lg:pt-[242px]" role="complementary">
+          
+          <div class="relative z-10 text-left">
+            <p class="pillar-label-museum text-[var(--color-oro-tecnico)] mb-6">Enlace</p>
+            
+            <a href="/talento/socio-dos" class="partner-link-minimal group inline-block outline-none" aria-label="Socio responsable: Manuel Burbano">
+              <span class="font-['ClashDisplay'] text-[21px] md:text-[23px] text-[var(--color-bosque)] font-medium block leading-tight antialiased">
+                Manuel Burbano
+              </span>
+              <div class="axial-stela-proportional" aria-hidden="true"></div>
+            </a>
+          </div>
+
+          <nav class="transversal-nav-minimal relative z-10" aria-label="Otras áreas de práctica">
+            <p class="pillar-label-museum text-[var(--color-oro-tecnico)] mb-6 text-left">Otras Áreas</p>
+            <ul class="flex flex-col gap-5">
+              {relatedAreas.map((area) => (
+                <li>
+                  <a href={area.href} class="nav-link-stela-minimal group block text-left outline-none">
+                    <span class="font-['Hanken_Grotesk'] text-[17px] text-[var(--color-bosque)] group-hover:text-[var(--color-oro-tecnico)] transition-colors duration-500 block">
+                      {area.name}
+                    </span>
+                    <div class="axial-underline-minimal" aria-hidden="true"></div>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
+
+        <article class="flex flex-col gap-14 md:gap-16 observer-element-area px-4 md:px-0 lg:pr-12" style="transition-delay: 0.3s;">
+          
+          <header class="mb-10 relative text-left">
+            <h1 class="font-['ClashDisplay'] font-bold text-[30px] md:text-[45px] text-[var(--color-bosque)] leading-[1.1] pt-4 tracking-[0.02em] antialiased uppercase">
+              {titlePart1} <br />
+              <span class="ampersand-mono-regular">&</span> {titlePart2} <br />
+              {titlePart3}
+            </h1>
+          </header>
+
+          <div class="space-y-12 max-w-3xl">
+            <p class="hanken-body-text">
+              Abordamos la movilidad internacional como un componente estructural de la proyección transnacional de personas y organizaciones, integrando el derecho migratorio dentro de un esquema más amplio de estructuración jurídica internacional, orientado a la estabilidad, la previsibilidad normativa y la correcta inserción en múltiples ordenamientos jurídicos.
+            </p>
+
+            <p class="hanken-body-text">
+              Nuestra intervención prioriza la seguridad jurídica y la continuidad operativa de proyectos personales e institucionales con dimensión transfronteriza, reduciendo la exposición a contingencias administrativas y regulatorias, y asegurando una planificación coherente de la residencia, permanencia y presencia internacional en entornos normativos complejos.
+            </p>
+
+            <p class="hanken-body-text">
+              La práctica concibe la movilidad internacional como un activo jurídico estratégico dentro de procesos de estructuración internacional, orientado a proteger el estatus migratorio, garantizar el cumplimiento normativo y facilitar la gestión eficiente de la presencia global, bajo marcos de certeza jurídica que resguardan tanto la dignidad humana como los objetivos organizacionales y patrimoniales involucrados.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script is:inline>
+  {
+    const options = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+    const observerArea = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observerArea.unobserve(entry.target);
+        }
+      });
+    }, options);
+
+    // Blindaje defensivo Magic Circle
+    const elements = document.querySelectorAll('.observer-element-area');
+    if (elements.length > 0) {
+      elements.forEach(el => observerArea.observe(el));
+    }
+  }
+</script>
+
+<style is:global>
+  /* --- REFINAMIENTO TIPOGRÁFICO --- */
+  .ampersand-mono-regular {
+    font-family: 'B612 Mono', monospace !important;
+    color: var(--color-oro-noble);
+    font-size: 0.82em;
+    margin-right: 0.25em;
+    vertical-align: middle;
+    font-weight: 400;
+  }
+
+  .hanken-body-text {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: clamp(17px, 2vw, 20px);
+    color: var(--color-bosque);
+    line-height: 1.8;
+    font-weight: 400;
+    opacity: 1;
+    text-wrap: pretty;
+  }
+
+  .pillar-label-museum {
+    font-family: 'Hanken Grotesk', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5em; 
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  /* --- SISTEMA AXIAL SEDOSO (1.8s) --- */
+  .axial-stela-proportional {
+    width: 0;
+    height: 1.5px;
+    margin-top: 8px;
+    background: linear-gradient(to right, var(--color-oro-noble), transparent);
+    opacity: 0;
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+  }
+  .partner-link-minimal:hover .axial-stela-proportional { 
+    opacity: 1; width: 100%;
+  }
+
+  .axial-underline-minimal {
+    width: 0;
+    height: 1.5px;
+    background: linear-gradient(to right, var(--color-oro-noble), transparent);
+    margin-top: 4px;
+    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .nav-link-stela-minimal:hover .axial-underline-minimal { 
+    width: 80px;
+  }
+
+  /* EFECTO SEDA: 1.8s para mayor agilidad */
+  .observer-element-area {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+    transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+  }
+
+  .observer-element-area.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  @media (max-width: 1024px) {
+    .lg\:pt-\[242px\] { padding-top: 0; }
+    h1 { font-size: 28px; line-height: 1.2; letter-spacing: 0.01em; }
+    .pillar-label-museum { font-size: 11px; letter-spacing: 0.3em; }
+    .hanken-body-text { font-size: 17px; line-height: 1.7; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .observer-element-area { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+</style>

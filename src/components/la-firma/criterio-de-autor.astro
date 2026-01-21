@@ -1,0 +1,145 @@
+---
+/* CriterioDeAutor.astro - Versión Cerrada: Tensión Editorial & Ritmo Seda */
+---
+
+<section 
+  class="relative min-h-[55vh] md:min-h-[70vh] flex items-center overflow-hidden bg-white py-16 md:py-0"
+  aria-labelledby="criterio-section-title"
+>
+
+  <div class="max-w-[1440px] mx-auto px-6 md:px-28 relative z-10 w-full">
+    <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] items-center gap-10 md:gap-20">
+      
+      <div class="flex flex-col gap-10 md:gap-12 max-w-[700px]">
+        <div class="observer-element-criterio">
+          <h2 id="criterio-section-title" class="criterio-heading text-[var(--color-bosque)] antialiased">
+            Criterio<br />de Autor
+          </h2>
+        </div>
+
+        <div class="observer-element-criterio" style="transition-delay: 0.4s;">
+          <div class="relative pl-6 md:pl-16 py-2">
+            <div class="axial-v-trail-thin" aria-hidden="true"></div>
+            
+            <p class="criterio-paragraph-lead text-[var(--color-bosque)] mb-6 font-semibold antialiased">
+              La maestría jurídica es intransferible
+            </p>
+            
+            <p class="criterio-paragraph-body text-[var(--color-bosque)] font-normal opacity-100 antialiased">
+              Operamos bajo un modelo de involucramiento total, <br /> donde el núcleo 
+              intelectual es diseñado directamente por los socios.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden md:flex flex-col items-start justify-start h-full observer-element-criterio" style="transition-delay: 0.8s;">
+         <div class="axial-v-trail-long mb-6" aria-hidden="true"></div>
+         <span class="font-['Hanken_Grotesk'] text-[12px] tracking-[0.8em] text-[var(--color-oro-tecnico)] font-bold [writing-mode:vertical-lr] rotate-180 uppercase antialiased">
+          NON-DELEGABLE EXPERTISE
+        </span>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  {
+    const options = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+    const observerCriterio = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observerCriterio.unobserve(entry.target);
+        }
+      });
+    }, options);
+
+    document.querySelectorAll('.observer-element-criterio').forEach(el => observerCriterio.observe(el));
+  }
+</script>
+
+<style>
+  /* --- TIPOGRAFÍA Y ESCALA --- */
+  .criterio-heading {
+    font-family: 'ClashDisplay', sans-serif;
+    font-weight: 700;
+    font-size: clamp(38px, 5vw, 68px);
+    line-height: 1.05;
+    /* Ajuste Editorial: -0.02em para máxima solidez */
+    letter-spacing: -0.02em;
+  }
+
+  .criterio-paragraph-lead {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: clamp(18px, 2.2vw, 20px);
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+  }
+
+  .criterio-paragraph-body {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: clamp(17px, 2vw, 20px);
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+  }
+
+  /* --- SISTEMA DE ESTELAS AXIALES (SINCRO SEDA) --- */
+  .axial-v-trail-thin {
+    position: absolute;
+    left: 0; top: 0; width: 1.5px; height: 100%;
+    background: linear-gradient(to bottom, var(--color-oro-noble) 0%, rgba(184, 148, 79, 0) 100%);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease;
+    /* AJUSTE: Sincronía a 0.55s para acompañar el texto de 0.4s */
+    transition-delay: 0.55s;
+    opacity: 0;
+  }
+
+  .is-visible .axial-v-trail-thin {
+    transform: scaleY(1);
+    opacity: 0.6;
+  }
+
+  .axial-v-trail-long {
+    width: 1.5px;
+    height: 0;
+    background: linear-gradient(to bottom, transparent, var(--color-oro-noble) 50%, transparent);
+    transition: height 2.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 2s ease;
+    opacity: 0;
+  }
+
+  .is-visible .axial-v-trail-long {
+    height: 100px;
+    opacity: 0.4;
+  }
+
+  /* EFECTO SEDA: 40px Glide + 2.4s */
+  .observer-element-criterio {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+    transition: opacity 2.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 2.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+  }
+
+  .observer-element-criterio.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* OPTIMIZACIÓN MÓVIL */
+  @media (max-width: 768px) {
+    .criterio-heading { font-size: 38px; line-height: 1.1; }
+    .criterio-paragraph-lead, .criterio-paragraph-body { font-size: 17px; }
+    .axial-v-trail-long { height: 60px; }
+    .is-visible .axial-v-trail-long { height: 60px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .observer-element-criterio { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .axial-v-trail-thin, .axial-v-trail-long { transition: none !important; opacity: 1 !important; transform: none !important; }
+  }
+</style>

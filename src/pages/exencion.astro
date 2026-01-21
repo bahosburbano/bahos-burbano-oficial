@@ -1,0 +1,146 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Metadatos de Autoridad Digital
+const pageTitle = "Exención de Responsabilidad | Bahos & Burbano";
+const lastUpdate = "19 de enero de 2026";
+const readingTime = "4 minutos";
+---
+
+<Layout title={pageTitle}>
+  <a href="#contenido-legal" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-[var(--color-oro-noble)] focus:text-[var(--color-bosque)] focus:p-4">
+    Saltar al contenido legal
+  </a>
+
+  <main class="bg-white min-h-screen" id="main-content" role="main">
+    
+    <section class="relative pt-32 pb-16 px-6 md:px-28" aria-labelledby="header-title">
+      <div class="max-w-[1000px] mx-auto text-center md:text-left">
+        <div class="flex flex-col md:flex-row gap-4 md:items-center mb-10 reveal-sharp">
+          <div class="flex items-center gap-4 text-[10px] tracking-[0.3em] uppercase font-bold text-[var(--color-bosque)]/60">
+            <p>Vigencia: <span class="text-[var(--color-bosque)]">{lastUpdate}</span></p>
+            <span class="w-1 h-1 bg-[var(--color-oro-noble)] rounded-full" aria-hidden="true"></span>
+            <p>Lectura: {readingTime}</p>
+          </div>
+        </div>
+
+        <h1 id="header-title" class="font-['ClashDisplay'] text-[38px] md:text-[62px] font-bold tracking-tight leading-[1.1] uppercase reveal-sharp">
+          Exención de Responsabilidad <br /> 
+          <span class="bb-amp">&</span> <br class="md:hidden" />
+          <span class="text-[var(--color-bosque)]">Naturaleza de la Información</span>
+        </h1>
+        <div class="axial-stela-main mt-10 mx-auto md:mx-0" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <article class="max-w-[1000px] mx-auto px-6 md:px-28 pb-32" id="contenido-legal">
+      <div class="space-y-20 legal-content reveal-sharp" style="animation-delay: 0.3s;">
+        
+        <section aria-labelledby="sec-naturaleza">
+          <h2 id="sec-naturaleza" class="legal-heading">Naturaleza de la Información</h2>
+          <p class="legal-paragraph">
+            Este sitio web tiene carácter exclusivamente informativo <span class="bb-amp">&</span> institucional. El contenido aquí expuesto constituye una descripción de los servicios <span class="bb-amp">&</span> la visión de la firma; bajo ninguna circunstancia debe interpretarse como asesoría legal, opinión jurídica o garantía de resultado frente a un caso particular.
+          </p>
+        </section>
+
+        <section aria-labelledby="sec-relacion">
+          <h2 id="sec-relacion" class="legal-heading">Ausencia de Relación Abogado <span class="bb-amp">&</span> Cliente</h2>
+          <p class="legal-paragraph">
+            La navegación por este portal o el envío de información a través de los canales de contacto no constituye ni crea una relación abogado-cliente. Dicho vínculo profesional solo se formaliza mediante el perfeccionamiento de un contrato de prestación de servicios <span class="bb-amp">&</span> el cumplimiento de los protocolos de conflicto de interés de la firma Bahos <span class="bb-amp">&</span> Burbano.
+          </p>
+        </section>
+
+        <section aria-labelledby="sec-propiedad">
+          <h2 id="sec-propiedad" class="legal-heading">Propiedad Intelectual <span class="bb-amp">&</span> Autoría</h2>
+          <p class="legal-paragraph">
+            Los conceptos "Arquitectura Jurídica", "Ubicuidad Estratégica" <span class="bb-amp">&</span> "Criterio de Autor", así como la identidad visual <span class="bb-amp">&</span> los contenidos textuales, son propiedad intelectual protegida de Bahos <span class="bb-amp">&</span> Burbano. Queda prohibida su reproducción o uso sin autorización técnica expresa.
+          </p>
+        </section>
+
+        <section aria-labelledby="sec-jurisdiccion">
+          <h2 id="sec-jurisdiccion" class="legal-heading">Jurisdicción <span class="bb-amp">&</span> Competencia</h2>
+          <p class="legal-paragraph">
+            Cualquier controversia relacionada con el uso de este sitio web será resuelta bajo la legislación de la República de Colombia, sometiéndose el usuario a la jurisdicción de las autoridades nacionales competentes.
+          </p>
+        </section>
+
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style is:global>
+  :root {
+    --color-bosque: #0C382E;
+    --color-oro-noble: #B8944F;
+    --silk-bezier: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* --- PROTOCOLO DEL AMPERSAND (B612 MONO) --- */
+  .bb-amp {
+    font-family: 'B612 Mono', monospace;
+    font-weight: 400;
+    margin: 0 0.25em;
+    /* Hereda color automáticamente del padre para evitar cartilla de colores */
+  }
+
+  /* --- TIPOGRAFÍA Y JERARQUÍA --- */
+  .legal-heading {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+    color: var(--color-bosque);
+    position: relative;
+    padding-bottom: 0.75rem;
+  }
+
+  .legal-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 1px;
+    background: linear-gradient(to right, var(--color-oro-noble), transparent);
+  }
+
+  .legal-paragraph {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 17px;
+    line-height: 1.8;
+    color: rgba(12, 56, 46, 0.95);
+    text-wrap: pretty;
+  }
+
+  /* --- INFRAESTRUCTURA VISUAL (PRI) --- */
+  .axial-stela-main {
+    width: 140px;
+    height: 1px;
+    background: linear-gradient(to right, var(--color-oro-noble), transparent);
+  }
+
+  /* --- SILK PROTOCOL: 1.8s --- */
+  .reveal-sharp {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: reveal-up 1.8s var(--silk-bezier) forwards;
+    will-change: transform, opacity;
+  }
+
+  @keyframes reveal-up {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* --- OPTIMIZACIÓN MÓVIL Y ACCESIBILIDAD --- */
+  @media (max-width: 768px) {
+    .legal-heading { font-size: 18px; }
+    .legal-paragraph { font-size: 16px; line-height: 2; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-sharp { animation: none; opacity: 1; transform: none; }
+  }
+</style>

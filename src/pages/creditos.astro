@@ -1,0 +1,78 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Derecho Corporativo & Compliance | Bahos & Burbano">
+  <main class="bg-brand-white min-h-screen pt-40 pb-48 overflow-hidden selection:bg-brand-gold-champagne selection:text-brand-white">
+    
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+      
+      <section class="w-full mb-40 reveal-sharp">
+        <h1 class="group font-clash font-bold text-3xl lg:text-5xl text-brand-green-mineral uppercase leading-[0.9] tracking-[0.3em] text-left cursor-default">
+          Derecho <br/>
+          Corporativo <span class="font-mono font-bold mx-2 text-brand-green-mineral group-hover:text-brand-gold-champagne transition-colors duration-1000">&</span> <br/>
+          Compliance
+        </h1>
+      </section>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
+        
+        <article class="space-y-12 font-hanken text-brand-green-mineral/90 text-[15px] lg:text-[17px] leading-[1.9] text-left reveal-sharp" style="transition-delay: 300ms;">
+          
+          <p>
+            Estructuramos organizaciones, transacciones y relaciones empresariales bajo una lógica de preservación de valor, coherencia normativa y asignación estratégica del riesgo. Nuestra práctica corporativa se enfoca en el diseño de arquitecturas societarias y contractuales capaces de operar con solvencia en entornos altamente regulados y escenarios transnacionales complejos.
+          </p>
+
+          <p>
+            El Compliance se concibe como un pilar autónomo de integridad institucional y gestión del riesgo legal, directamente vinculado a la responsabilidad administrativa y penal de la organización. Desarrollamos marcos de cumplimiento alineados con estándares internacionales, orientados a mitigar la exposición sancionatoria y a fortalecer la credibilidad institucional frente a autoridades, inversionistas y terceros.
+          </p>
+
+          <p>
+            La práctica articula el derecho societario, contractual y regulatorio desde una visión unificada, permitiendo que las organizaciones ejecuten procesos de reorganización y operaciones de M&A con consistencia jurídica, ejecutabilidad y control normativo efectivo, transformando la norma en un activo de confianza para la sostenibilidad del negocio.
+          </p>
+
+        </article>
+
+        <div class="relative reveal-seda" style="transition-delay: 600ms;">
+          <div class="overflow-hidden aspect-video lg:aspect-[16/10] bg-brand-white">
+            <img 
+              src="/4.corporativo.webp" 
+              alt="Estructura Corporativa y Arquitectura de Poder" 
+              class="w-full h-full object-cover grayscale brightness-105 transition-all duration-[2500ms] hover:grayscale-0 hover:scale-105"
+            />
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+</Layout>
+
+<style>
+  /* Tipografías según ADN Visual establecido */
+  .font-clash { font-family: 'Clash Display', sans-serif; }
+  .font-hanken { font-family: 'Hanken Grotesk', sans-serif; }
+  .font-mono { font-family: 'B612 Mono', monospace; }
+
+  /* Animación Sharp: Revelación con desplazamiento sutil */
+  .reveal-sharp {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: reveal-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Animación Seda para la imagen (fundido cinematográfico) */
+  .reveal-seda {
+    opacity: 0;
+    animation: fade-in 2.5s ease-out forwards;
+  }
+
+  @keyframes reveal-up {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fade-in {
+    to { opacity: 1; }
+  }
+</style>

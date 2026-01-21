@@ -1,0 +1,64 @@
+---
+// src/components/ImageMagic.astro - EDICIÓN BRILLO BOUTIQUE
+interface Props {
+  src: string;
+  alt: string;
+  className?: string;
+  aspect?: "video" | "square" | "portrait" | "wide";
+}
+
+const { src, alt, className = "", aspect = "video" } = Astro.props;
+
+const aspectRatios = {
+  video: "aspect-video",
+  square: "aspect-square",
+  portrait: "aspect-[3/4]",
+  wide: "aspect-[21/9]",
+};
+
+const aspectClass = aspectRatios[aspect];
+---
+
+<div class={`relative overflow-hidden bg-[#0a1412] group ${aspectClass} ${className} reveal-frame`}>
+  
+  <div class="absolute inset-0 z-20 opacity-[0.05] pointer-events-none mix-blend-overlay grain-overlay"></div>
+
+  <img
+    src={src}
+    alt={alt}
+    loading="lazy"
+    decoding="async"
+    class="w-full h-full object-cover object-center 
+           filter brightness-[1.15] contrast-[1.10] saturate-[1.10]
+           transition-all duration-[1000ms] ease-[cubic-bezier(0.23,1,0.32,1)]
+           group-hover:scale-[1.02] group-hover:brightness-[1.25]
+           img-magic-reveal"
+  />
+
+  <div class="absolute inset-0 z-30 opacity-20 pointer-events-none
+              bg-[radial-gradient(circle_at_center,_white_0%,_transparent_70%)] mix-blend-soft-light">
+  </div>
+</div>
+
+<style>
+  /* Animación de entrada: Sin bruma/blur, solo revelado nítido */
+  .reveal-frame {
+    mask-image: linear-gradient(to right, black, black);
+    mask-repeat: no-repeat;
+    mask-size: 0% 100%;
+    animation: reveal-mask 1.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  .grain-overlay {
+    background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+  }
+
+  .img-magic-reveal {
+    opacity: 0;
+    /* Eliminamos el blur(5px) anterior para que la foto nazca nítida */
+    animation: clear-reveal 1.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  @keyframes reveal-mask { to { mask-size: 100% 100%; } }
+  @keyframes clear-reveal { to { opacity: 1; } }
+</style>

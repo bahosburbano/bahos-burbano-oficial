@@ -1,0 +1,26 @@
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+import HeroPremium from '../components/HeroPremium.astro';
+import Manifiesto from '../components/Manifiesto.astro';
+import AreasPractica from '../components/AreasPractica.astro';
+import ArquitecturaInstitucional from '../components/ArquitecturaInstitucional.astro';
+
+// DESCRIPTOR DE MÁXIMA AUTORIDAD (Optimizado a 145 caracteres)
+const pageDescription = "Bahos & Burbano | Estructuración jurídica de asuntos complejos en el ámbito público y privado. Arquitectura Jurídica de élite para empresa y Estado.";
+---
+
+<Layout 
+  title="Derecho Público & Privado | Arquitectura Jurídica"
+  description={pageDescription}
+>
+  
+  <HeroPremium />
+
+  <Manifiesto />
+
+  <AreasPractica />
+
+  <ArquitecturaInstitucional />
+
+</Layout>

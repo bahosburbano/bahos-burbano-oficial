@@ -1,0 +1,174 @@
+---
+/* HeroHome.astro - Calibración Quirúrgica: Estabilización y Glide */
+---
+
+<section class="hero-boutique relative w-full overflow-hidden bg-white" aria-labelledby="hero-main-title">
+  <div class="flex flex-col lg:flex-row-reverse min-h-[600px] lg:h-[75dvh]">
+    
+    <div class="w-full lg:w-[62%] flex items-center justify-center px-8 sm:px-16 lg:pr-28 lg:pl-16 py-20 relative z-20">
+      <div class="max-w-4xl flex flex-col">
+        <span class="hero-pretitle block text-[var(--color-oro-tecnico)] uppercase tracking-[0.8em] font-semibold mb-8 animate-reveal">
+          Precisión Estructural
+        </span>
+        
+        <h1 id="hero-main-title" class="hero-title text-[var(--color-bosque)] mb-12 animate-reveal-delayed">
+          La autoridad jurídica <br class="hidden sm:block"/>
+          se construye con método
+        </h1>
+        
+        <div class="axial-trail-container" aria-hidden="true">
+          <div class="axial-trail"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full lg:w-[38%] flex items-center justify-center py-12 lg:py-0 relative overflow-hidden">
+      <div class="totem-alignment-wrapper">
+        <a href="#manifiesto" class="totem-link" aria-label="Explorar nuestro manifiesto institucional">
+          <div class="totem-reveal">
+            <svg class="geometric-totem-solid" viewBox="0 0 40 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <path d="M20 18 L38 5 V35 L20 50 L2 35 V5 L20 18Z" fill="var(--color-oro-noble)" />
+              <rect x="18.5" y="50" width="3" height="10" fill="var(--color-oro-noble)" />
+            </svg>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .hero-boutique { background-color: #FFFFFF; }
+
+  /* CORRECCIÓN: Estabilización del subtítulo */
+  .hero-pretitle { 
+    font-size: 12px; 
+    line-height: 1;
+    opacity: 0; /* Estado inicial para evitar titileo */
+    width: max-content; /* Bloquea el ancho para evitar expansión irregular */
+    white-space: nowrap;
+    backface-visibility: hidden; /* Forzado de GPU para suavidad */
+    -webkit-font-smoothing: antialiased;
+    transform: translateZ(0); /* Estabilización de renderizado */
+  }
+
+  .hero-title {
+    font-family: 'ClashDisplay', sans-serif;
+    font-size: clamp(2.4rem, 6vw, 4.2rem); 
+    font-weight: 800; 
+    line-height: 1.05; 
+    letter-spacing: 0.05em; 
+    color: var(--color-bosque);
+    opacity: 0; /* Estado inicial para evitar salto visual */
+    -webkit-font-smoothing: antialiased;
+    transform: translateZ(0);
+  }
+
+  /* --- ESTELA AXIAL --- */
+  .axial-trail-container {
+    width: 100%;
+    height: 1.5px;
+    overflow: hidden;
+  }
+
+  .axial-trail {
+    height: 100%;
+    background: linear-gradient(to right, var(--color-oro-noble) 0%, rgba(184, 148, 79, 0) 100%);
+    width: 0;
+    animation: axialExpansion 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.8s;
+  }
+
+  /* --- TÓTEM CINEMÁTICO --- */
+  .totem-alignment-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 320px; 
+  }
+
+  .totem-link {
+    display: block;
+    cursor: pointer;
+    outline: none;
+    transition: opacity 0.4s ease;
+  }
+
+  .totem-link:focus-visible {
+    outline: 2px solid var(--color-oro-noble);
+    outline-offset: 15px;
+    border-radius: 100px;
+  }
+
+  .totem-reveal {
+    opacity: 0;
+    /* CINEMÁTICA: Aparición en 0.6s, descenso en 4s */
+    animation: kinematicReveal 4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.6s; 
+    will-change: opacity, transform;
+  }
+
+  .geometric-totem-solid {
+    width: 21px;
+    height: auto;
+    filter: drop-shadow(0 4px 12px rgba(184, 148, 79, 0.15));
+  }
+
+  /* --- ANIMACIONES REFINADAS --- */
+  @keyframes kinematicReveal {
+    0% { opacity: 0; transform: translate3d(0, -60px, 0); }
+    30% { opacity: 1; }
+    100% { opacity: 1; transform: translate3d(0, 0, 0); }
+  }
+
+  @keyframes axialExpansion {
+    from { width: 0; }
+    to { width: 320px; }
+  }
+
+  @keyframes revealText {
+    from { 
+      opacity: 0; 
+      transform: translate3d(0, 20px, 0); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translate3d(0, 0, 0); 
+    }
+  }
+
+  .animate-reveal {
+    animation: revealText 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.2s;
+  }
+
+  .animate-reveal-delayed {
+    animation: revealText 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.5s;
+  }
+
+  /* --- OPTIMIZACIÓN MÓVIL --- */
+  @media (max-width: 1024px) {
+    .hero-title { font-size: 2.3rem; line-height: 1.1; letter-spacing: 0.03em; }
+    .hero-pretitle { 
+      font-size: 10px; 
+      letter-spacing: 0.4em; 
+      width: 100%; /* En móvil centramos el texto */
+      text-align: center;
+    }
+    .axial-trail { width: 140px; }
+    .hero-boutique .flex { flex-direction: column-reverse; }
+    .totem-alignment-wrapper { height: auto; margin-top: 40px; justify-content: center; }
+    .geometric-totem-solid { width: 18px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-reveal, .animate-reveal-delayed, .totem-reveal, .axial-trail {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      width: 280px !important;
+    }
+  }
+</style>

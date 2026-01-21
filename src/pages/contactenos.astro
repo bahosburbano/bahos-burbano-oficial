@@ -1,0 +1,243 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// IDENTIDAD INSTITUCIONAL
+const titleText = "Contáctenos";
+const firmName = "Bahos & Burbano";
+const whatsappMsg = "Gracias por contactar a Bahos & Burbano. Por favor, indique el asunto que desea poner en conocimiento de nuestro equipo.";
+const encodedMsg = encodeURIComponent(whatsappMsg);
+
+// DESCRIPTOR DE AUTORIDAD PARA ESTA PÁGINA (SEO)
+const contactDescription = "Protocolo de Consulta para el suministro de información confidencial. Canales oficiales de comunicación de la firma Bahos & Burbano.";
+---
+
+<Layout 
+  title={`${titleText} | ${firmName}`}
+  description={contactDescription}
+>
+  <a href="#protocolo-form" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-[var(--color-oro-noble)] focus:text-[var(--color-bosque)] focus:p-4">
+    Saltar al formulario de consulta
+  </a>
+
+  <main class="bg-white min-h-screen" id="main-content" role="main">
+    
+    <section class="relative flex items-center pt-32 bg-white" aria-labelledby="main-title">
+      <div class="max-w-[1400px] mx-auto px-6 md:px-28 w-full text-left">
+        <div class="reveal-sharp">
+          <h1 id="main-title" class="font-['ClashDisplay'] text-[42px] md:text-[68px] font-bold text-[var(--color-bosque)] tracking-[0.08em] leading-tight uppercase">
+            {titleText}
+          </h1>
+          <div class="axial-stela-main mt-7" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 px-6 md:px-28">
+      <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[40%_60%] gap-24 items-start">
+        
+        <address class="space-y-20 not-italic">
+          <div class="reveal-sharp">
+            <h2 class="font-['Hanken_Grotesk'] text-[12px] tracking-[0.5em] uppercase text-[var(--color-oro-noble)] font-normal mb-10">Canales Oficiales</h2>
+            
+            <div class="space-y-12">
+              <div class="group">
+                <p class="font-['Hanken_Grotesk'] text-[10px] tracking-widest uppercase text-[#546964] mb-3">Correo Electrónico</p>
+                <a href="mailto:info@bahosburbano.com" class="font-['ClashDisplay'] text-2xl font-medium text-[var(--color-bosque)] hover:text-[var(--color-oro-noble)] transition-all duration-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-oro-noble)]">
+                  info@bahosburbano.com
+                </a>
+              </div>
+
+              <div class="group">
+                <p class="font-['Hanken_Grotesk'] text-[10px] tracking-widest uppercase text-[#546964] mb-3">WhatsApp</p>
+                <a 
+                  href={`https://wa.me/573136621779?text=${encodedMsg}`} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  aria-label="Contactar vía WhatsApp (abre en una nueva pestaña)"
+                  class="font-['ClashDisplay'] text-2xl font-medium text-[var(--color-bosque)] hover:text-[var(--color-oro-noble)] transition-all duration-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--color-oro-noble)]"
+                >
+                  +57 313 6621779
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-12 border-t border-[var(--color-bosque)]/10 reveal-sharp">
+            <h2 class="font-['Hanken_Grotesk'] text-[12px] tracking-[0.5em] uppercase text-[var(--color-oro-noble)] font-normal mb-8">Capital Intelectual</h2>
+            <a 
+              href="https://www.linkedin.com/company/bahosburbano/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="Visitar nuestro perfil de LinkedIn (abre en una nueva pestaña)"
+              class="group flex items-center gap-6 text-[10px] tracking-[0.5em] uppercase text-[var(--color-bosque)]/60 hover:text-[var(--color-oro-noble)] transition-all duration-700"
+            >
+              <div class="axial-stela-social" aria-hidden="true"></div>
+              LinkedIn
+            </a>
+          </div>
+
+          <div class="pt-12 border-t border-[var(--color-bosque)]/10 reveal-sharp">
+            <h2 class="font-['Hanken_Grotesk'] text-[12px] tracking-[0.5em] uppercase text-[var(--color-oro-noble)] font-normal mb-8">Intervención Transversal</h2>
+            <p class="font-['Hanken_Grotesk'] text-[17px] text-[var(--color-bosque)] leading-relaxed max-w-md opacity-90">
+              La firma está diseñada para intervenir directamente en asuntos de alcance nacional e internacional, con presencia efectiva donde la complejidad jurídica lo impone.
+            </p>
+          </div>
+        </address>
+
+        <div class="relative reveal-sharp" style="animation-delay: 0.4s;">
+          <div class="absolute -top-6 -right-6 w-full h-full border border-[var(--color-bosque)]/5 z-0" aria-hidden="true"></div>
+          
+          <div class="bg-[var(--color-bosque)] p-8 md:p-14 relative z-10 shadow-2xl">
+            <div class="mb-14">
+              <h3 class="font-['ClashDisplay'] text-2xl font-medium text-white mb-3 tracking-wide">Protocolo de Consulta</h3>
+              <p class="pillar-label-museum text-[var(--color-oro-noble)]">Suministro de Información Confidencial</p>
+            </div>
+
+            <form id="protocolo-form" action="https://formspree.io/f/xvzgqjnb" method="POST" class="space-y-12" aria-label="Formulario de contacto confidencial">
+              <fieldset class="border-none p-0 m-0 space-y-12">
+                <legend class="sr-only">Información de la consulta</legend>
+                
+                <div class="hidden" aria-hidden="true">
+                  <label>Deje este campo vacío:</label>
+                  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+                </div>
+
+                <div class="group relative">
+                  <label for="full-name" class="form-label">Nombre o Razón Social</label>
+                  <input id="full-name" type="text" name="name" required aria-required="true" class="form-input" placeholder="Identidad del consultante..." />
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                  <div class="group relative">
+                    <label for="reply-email" class="form-label">Canal de Respuesta</label>
+                    <input id="reply-email" type="email" name="email" required aria-required="true" class="form-input" placeholder="email@entidad.com" />
+                  </div>
+                  <div class="group relative">
+                    <label for="intervention-area" class="form-label">Área de Intervención</label>
+                    <select id="intervention-area" name="subject" class="form-input appearance-none cursor-pointer">
+                      <option value="publico">Derecho Público</option>
+                      <option value="corporativo">Derecho Corporativo</option>
+                      <option value="sanitario">Derecho Sanitario</option>
+                      <option value="internacional">Derecho Internacional</option>
+                      <option value="general">General</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="group relative">
+                  <label for="consult-message" class="form-label">Resumen del Asunto</label>
+                  <textarea id="consult-message" name="message" rows="4" required aria-required="true" class="form-input resize-none" placeholder="Describa su consulta..."></textarea>
+                </div>
+              </fieldset>
+
+              <div class="p-6 bg-white/[0.02] border-l-2 border-[var(--color-oro-noble)]">
+                <p class="font-['Hanken_Grotesk'] text-[11px] leading-relaxed text-white/70 uppercase tracking-[0.15em]">
+                  Al enviar este formulario, usted autoriza el tratamiento de sus datos conforme a nuestra 
+                  <a href="/privacidad" class="text-[var(--color-oro-noble)] hover:underline underline-offset-4 transition-all">Política de Protección de Datos</a> 
+                  y 
+                  <a href="/seguridad" class="text-[var(--color-oro-noble)] hover:underline underline-offset-4 transition-all">Seguridad de la Información</a>, que se encuentran publicadas en www.bahosburbano.com. <br /><br />
+                  Toda información suministrada será tratada bajo estrictos protocolos de confidencialidad.
+                </p>
+              </div>
+
+              <button type="submit" class="w-full py-6 bg-[var(--color-oro-noble)] text-[var(--color-bosque)] text-[12px] tracking-[0.6em] uppercase hover:bg-white hover:text-[var(--color-bosque)] transition-all duration-700 font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
+                Enviar Protocolo
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style is:global>
+  :root {
+    --color-bosque: #0C382E;
+    --color-oro-noble: #B8944F;
+    --silk-bezier: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .pillar-label-museum {
+    font-family: 'Hanken Grotesk', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5em; 
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .axial-stela-main {
+    width: 240px;
+    height: 1px;
+    background: linear-gradient(to right, var(--color-oro-noble), transparent);
+  }
+
+  .axial-stela-social {
+    width: 48px;
+    height: 1px;
+    background: linear-gradient(to right, var(--color-oro-noble), transparent);
+    transition: width 0.7s var(--silk-bezier);
+  }
+
+  .group:hover .axial-stela-social {
+    width: 80px;
+  }
+
+  .form-label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-oro-noble);
+    transition: color 0.5s ease;
+  }
+
+  .form-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    border: none;
+    border-bottom: 1px solid rgba(184, 148, 79, 0.2);
+    padding: 1rem 0.5rem;
+    color: white;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 16px; 
+    outline: none;
+    transition: all 0.5s var(--silk-bezier);
+    border-radius: 0;
+  }
+
+  .form-input:hover, .form-input:focus {
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom-color: var(--color-oro-noble);
+  }
+
+  .reveal-sharp {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: reveal-up 1.8s var(--silk-bezier) forwards;
+    will-change: transform, opacity;
+  }
+
+  @keyframes reveal-up {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 1024px) {
+    h1 { font-size: 34px; tracking: 0.06em; }
+    .axial-stela-main { width: 160px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-sharp {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

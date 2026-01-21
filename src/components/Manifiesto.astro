@@ -1,0 +1,152 @@
+---
+/* Manifiesto.astro - Calibración Quirúrgica: Animación Sedosa & Viewport Aware */
+---
+
+<section 
+  id="manifiesto" 
+  class="manifiesto-clean relative w-full bg-white py-24 lg:py-48 overflow-hidden"
+  aria-labelledby="manifesto-section-title"
+>
+  <div class="max-w-7xl mx-auto px-8 sm:px-16 lg:px-24">
+    
+    <div class="flex flex-col lg:flex-row gap-16 lg:gap-20 lg:items-center mb-24 lg:mb-40">
+      
+      <div class="w-full lg:w-[52%]">
+        <span class="manifiesto-label observer-element block text-[var(--color-oro-tecnico)] uppercase tracking-[0.8em] font-semibold mb-8 opacity-0">
+          Manifiesto
+        </span>
+        
+        <h2 id="manifesto-section-title" class="manifiesto-title observer-element text-[var(--color-bosque)] mb-8 opacity-0">
+          El derecho es <br class="hidden lg:block"/>
+          arquitectura de poder
+        </h2>
+
+        <div class="axial-trail-manifesto observer-element" aria-hidden="true"></div>
+      </div>
+
+      <div class="w-full lg:w-[48%]">
+        <p class="manifiesto-text observer-element text-[var(--color-bosque)] max-w-2xl antialiased opacity-0">
+          Diseñamos estructuras jurídicas para decisiones que no admiten improvisación.
+        </p>
+      </div>
+    </div>
+
+    <div class="border-t border-[var(--color-bosque)]/10 pt-20">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+        <div class="pillar-box">
+          <h3 class="pillar-label-museum observer-element opacity-0">Precisión Jurídica</h3>
+        </div>
+        <div class="pillar-box text-left md:text-center">
+          <h3 class="pillar-label-museum observer-element opacity-0">Responsabilidad Directa</h3>
+        </div>
+        <div class="pillar-box text-left md:text-right">
+          <h3 class="pillar-label-museum observer-element opacity-0">Autoría Técnica</h3>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  /**
+   * INTERSECTION OBSERVER: Ejecución precisa.
+   */
+  const observerOptions = { 
+    threshold: 0.15, // Se activa un poco antes para que el inicio sea natural
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.observer-element').forEach(el => observer.observe(el));
+</script>
+
+<style>
+  .manifiesto-clean { background-color: #FFFFFF; -webkit-font-smoothing: antialiased; }
+
+  /* ESTADO INICIAL: Más profundo (40px) para un planeo más largo */
+  .observer-element {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+    will-change: transform, opacity;
+  }
+
+  /* CLASE ACTIVA: Duración extendida a 2.4s para máxima suavidad */
+  .observer-element.is-visible {
+    animation: revealSeda 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* CASCADA RÍTMICA: Delays más espaciados para elegancia */
+  h2.is-visible { animation-delay: 0.3s; }
+  p.is-visible { animation-delay: 0.6s; }
+  .axial-trail-manifesto.is-visible { animation-delay: 1s; }
+  .pillar-label-museum.is-visible { animation-delay: 1.2s; }
+
+  .manifiesto-title {
+    font-family: 'ClashDisplay', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 800; line-height: 1.05; letter-spacing: 0.05em; color: var(--color-bosque);
+  }
+
+  .manifiesto-text {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 500; line-height: 1.5; color: var(--color-bosque);
+  }
+
+  .manifiesto-label, .pillar-label-museum {
+    font-size: 11px; color: var(--color-oro-tecnico); text-transform: uppercase;
+    letter-spacing: 0.8em; font-weight: 600; white-space: nowrap; line-height: 1.6; display: inline-block;
+  }
+
+  /* ESTELA AXIAL: Sincronizada con el ritmo lento */
+  .axial-trail-manifesto {
+    height: 1.5px;
+    width: 0;
+    background: linear-gradient(to right, var(--color-oro-noble) 0%, rgba(184, 148, 79, 0) 100%);
+    will-change: width;
+  }
+
+  .axial-trail-manifesto.is-visible {
+    animation: expandTrailSeda 2.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* ANIMACIONES 'SEDA' */
+  @keyframes revealSeda {
+    from { 
+      opacity: 0; 
+      transform: translate3d(0, 40px, 0); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translate3d(0, 0, 0); 
+    }
+  }
+
+  @keyframes expandTrailSeda {
+    from { width: 0; opacity: 0; }
+    to { width: 240px; opacity: 1; }
+  }
+
+  /* OPTIMIZACIÓN MÓVIL */
+  @media (max-width: 1024px) {
+    .manifiesto-title { font-size: 2.3rem; line-height: 1.1; letter-spacing: 0.03em; }
+    .manifiesto-text { font-size: 1.35rem; }
+    .manifiesto-label, .pillar-label-museum { font-size: 10px; letter-spacing: 0.4em; white-space: normal; }
+    @keyframes expandTrailSeda { from { width: 0; } to { width: 160px; opacity: 1; } }
+  }
+
+  /* ACCESIBILIDAD */
+  @media (prefers-reduced-motion: reduce) {
+    .observer-element { opacity: 1 !important; transform: none !important; animation: none !important; }
+    .axial-trail-manifesto { width: 240px !important; opacity: 1 !important; }
+  }
+</style>
