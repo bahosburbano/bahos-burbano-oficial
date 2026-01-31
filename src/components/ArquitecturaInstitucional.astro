@@ -60,6 +60,7 @@
 </section>
 
 <script>
+  // 1. LÓGICA DE APARICIÓN (Tu código original intacto)
   const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -71,10 +72,37 @@
   }, observerOptions);
 
   document.querySelectorAll('.observer-element').forEach(el => observer.observe(el));
+
+  // 2. EFECTO "DESLIZAMIENTO DE SEDA" (La Solución al Destello)
+  // Verifica si la URL tiene un ancla (ej: #arquitectura-institucional)
+  if (window.location.hash) {
+    // A. Congela el scroll automático brusco del navegador
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    
+    // B. Fuerza a empezar arriba del todo (elimina el salto feo)
+    window.scrollTo(0, 0);
+
+    // C. Espera un micro-momento a que cargue la estructura y... DESLIZA.
+    window.addEventListener('load', () => {
+      const targetId = window.location.hash.substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        setTimeout(() => {
+          targetElement.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+          });
+        }, 100); // Pequeña pausa para asegurar suavidad
+      }
+    });
+  }
 </script>
 
 <style>
-  /* 1. TIPOGRAFÍA Y JERARQUÍA UNIFICADA */
+  /* 1. TIPOGRAFÍA Y JERARQUÍA UNIFICADA (INTACTO) */
   .label-museo-unified, .label-mini-gold {
     color: var(--color-oro-tecnico);
     font-size: 12px;
@@ -90,23 +118,23 @@
   /* AJUSTE MICROCÓPICO: Réplica exacta del formato de 'La Firma' */
   .pillar-title {
     font-family: 'ClashDisplay', sans-serif;
-    font-weight: 700; /* Bold */
-    font-size: 20px; /* Tamaño base móvil */
-    letter-spacing: -0.025em; /* Tracking Tight */
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.025em;
     color: var(--color-bosque);
     line-height: 1.1;
     margin-top: 1.8rem;
-    white-space: nowrap; /* Evita el doble renglón en desktop */
+    white-space: nowrap;
     -webkit-font-smoothing: antialiased;
   }
 
   @media (min-width: 768px) {
     .pillar-title {
-      font-size: 22px; /* md:text-[22px] */
+      font-size: 22px;
     }
   }
 
-  /* 2. ESTELAS AXIALES SEDOSAS */
+  /* 2. ESTELAS AXIALES SEDOSAS (INTACTO) */
   .micro-stela-gold {
     width: 60px;
     height: 1.5px;
@@ -144,9 +172,14 @@
     line-height: 1.5;
   }
 
-  /* 3. BOTÓN LEER MÁS: ACCESIBLE */
+  /* 3. BOTÓN LEER MÁS: SOLUCIÓN QUIRÚRGICA COMPLETA */
   .cta-wrapper { display: flex; justify-content: flex-end; width: 100%; }
   
+  /* HIGIENE: Elimina el flash gris en iPhone al tocar el enlace padre */
+  a.group {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   .read-more-box {
     font-family: 'B612 Mono', monospace;
     font-size: 9px;
@@ -156,36 +189,82 @@
     align-items: center;
     gap: 1rem;
     padding: 0.6rem 1.2rem 0.6rem 2.2rem;
+    
+    /* AISLAMIENTO: Protege el texto para que no sea tapado por el fondo */
     position: relative;
-    z-index: 1;
+    isolation: isolate;
+    
+    /* TRANSICIÓN: Solo color, sin bloqueo de GPU */
     transition: color 0.4s ease;
+    
+    -webkit-font-smoothing: antialiased;
+    white-space: nowrap; /* Evita que el texto se parta y se vea incompleto */
   }
 
+  /* BARRA VERDE: Actualizada a Transform (Más fluida que Width) */
   .read-more-box::before {
     content: '';
     position: absolute;
     top: 0; left: 0;
-    width: 6px; 
+    
+    width: 100%; /* Ocupa todo el contenedor */
     height: 100%;
     background-color: var(--color-bosque);
     z-index: -1;
-    transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    
+    /* ESTADO INICIAL: Escalado casi a cero (simula los 6px originales) */
+    transform: scaleX(0.08); 
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    
+    /* ACELERACIÓN: Solo aquí es segura */
+    will-change: transform;
   }
 
-  .group:hover .read-more-box,
-  .group:focus-visible .read-more-box { color: white; }
+  /* --- INTERACCIÓN UNIFICADA (PC + IPHONE) --- */
+  
+  /* 1. Expansión (Hover + Focus + Active para respuesta inmediata) */
   .group:hover .read-more-box::before,
-  .group:focus-visible .read-more-box::before { width: 100%; }
-
-  .group:focus-visible {
-    outline: 2px solid var(--color-oro-noble);
-    outline-offset: 12px;
+  .group:focus-visible .read-more-box::before,
+  .group:active .read-more-box::before { 
+    transform: scaleX(1); /* Expansión completa */
   }
 
-  .arrow-svg-stylized { width: 32px; height: 12px; transition: transform 0.4s ease; }
-  .group:hover .arrow-svg-stylized { transform: translateX(8px); }
+  /* 2. Cambio de Color Texto */
+  .group:hover .read-more-box,
+  .group:focus-visible .read-more-box,
+  .group:active .read-more-box { 
+    color: white; 
+  }
 
-  /* 4. ANIMACIONES (EFECTO SEDA 2.4s) */
+  /* 3. Limpieza de Borde Dorado (Solicitud Expresa) */
+  .group:focus-visible {
+    outline: none; 
+  }
+
+  /* FLECHA SVG: CORRECCIÓN DE ALTURA */
+  .arrow-svg-stylized { 
+    width: 32px; 
+    
+    /* CORRECCIÓN CRÍTICA: De 12px a 16px. 
+       Esto evita que la flecha se vea "incompleta" o cortada. */
+    height: 16px; 
+    
+    transition: transform 0.4s ease;
+    flex-shrink: 0;
+    
+    /* SEGURIDAD DE CAPAS */
+    position: relative;
+    z-index: 2;
+  }
+  
+  .group:hover .arrow-svg-stylized,
+  .group:focus-visible .arrow-svg-stylized,
+  .group:active .arrow-svg-stylized { 
+    transform: translateX(8px); 
+  }
+
+  /* 4. ANIMACIONES (EFECTO SEDA 2.4s) (INTACTO) */
   .observer-element {
     opacity: 0;
     transform: translate3d(0, 40px, 0);
@@ -200,17 +279,26 @@
     to { opacity: 1; transform: translate3d(0, 0, 0); }
   }
 
-  /* 5. OPTIMIZACIÓN MÓVIL */
+  /* 5. OPTIMIZACIÓN MÓVIL (INTACTO) */
   @media (max-width: 768px) {
     .label-museo-unified, .label-mini-gold { font-size: 11px; letter-spacing: 0.4em; }
     .pillar-title { white-space: normal; padding: 0 1rem; font-size: 20px; }
     .closing-stela-vertical { height: 50px; }
     .final-phrase-institutional { padding: 0 20px; }
+    
+    /* Ajuste de padding para compensar tamaño */
     .read-more-box { font-size: 8.5px; padding-left: 1.8rem; }
+    
     .micro-stela-gold { width: 40px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .observer-element { opacity: 1 !important; transform: none !important; animation: none !important; }
   }
+
+  /* 6. SUAVIZADO DE NAVEGACIÓN (EFECTO ANTI-SALTO) */
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
 </style>

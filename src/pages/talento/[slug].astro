@@ -131,23 +131,30 @@ const whatsappPhone = socio.contacto.telefono.replace(/\+/g, '').replace(/\s/g, 
             </div>
           </section>
 
-          <section aria-labelledby="pract-heading">
+         <section aria-labelledby="pract-heading">
             <h2 id="pract-heading" class="flex items-center gap-6 font-['Hanken_Grotesk'] text-[14px] font-bold tracking-[0.3em] text-brand-gold-champagne uppercase mb-8">
               <span>Áreas de Práctica</span><div class="stela-axial-sober"></div>
             </h2>
             <ul class="flex flex-col w-full">
               {socio.expertise.map((item, i) => (
-                <li key={i} class="py-3 border-b border-[var(--color-bosque)]/5 last:border-0">
-                  <span class="font-['Hanken_Grotesk'] text-[16px] md:text-[17px] text-brand-green-mineral block antialiased">
-                    {item.includes('&') ? item.split('&').map((chunk, j, arr) => (
+                <li key={i} class="border-b border-[var(--color-bosque)]/5 last:border-0 group/item">
+                  
+                  {/* AQUÍ ESTÁ LA CORRECCIÓN CLAVE: Usamos item.link e item.titulo */}
+                  <a 
+                    href={item.link}
+                    class="block py-3 font-['Hanken_Grotesk'] text-[16px] md:text-[17px] text-brand-green-mineral group-hover/item:text-brand-gold-champagne transition-colors duration-300 antialiased"
+                  >
+                    {/* Verificamos si item.titulo (EL TEXTO) tiene el ampersand */}
+                    {item.titulo.includes('&') ? item.titulo.split('&').map((chunk, j, arr) => (
                       <span key={j}>
                         {chunk}
                         {j < arr.length - 1 && (
                           <span aria-hidden="true" style="font-family: 'B612 Mono', monospace;" class="text-[19px] mx-1.5 relative top-[1px] opacity-90">&</span>
                         )}
                       </span>
-                    )) : item}
-                  </span>
+                    )) : item.titulo}
+                  </a>
+
                 </li>
               ))}
             </ul>

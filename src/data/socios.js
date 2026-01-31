@@ -16,18 +16,33 @@ export const socios = {
     ],
     experiencia: [
     "Ha desarrollado una trayectoria centrada en la dirección jurídica de asuntos públicos críticos, integrando funciones de defensa judicial, gobierno institucional y articulación técnica con órganos centrales del Estado.",
-    "Su práctica se distingue por una participación directa en litigios de alta complejidad ante las máximas instancias judiciales, así como en escenarios internacionales de protección de derechos, particularmente en asuntos con impacto estructural sobre la actuación administrativa y el control constitucional del poder público.",
+    "Su experticia se distingue por una participación directa en litigios de alta complejidad ante las máximas instancias judiciales, así como en escenarios internacionales de protección de derechos, particularmente en asuntos con impacto estructural sobre la actuación administrativa y el control constitucional del poder público.",
     "Ha ejercido roles de alta dirección y presidencia delegada en órganos de gobierno de entidades descentralizadas pertenecientes a sectores estratégicos, incluyendo infraestructura, vivienda, salud pública, cultura y desarrollo social. Desde estas posiciones ha intervenido en la definición de políticas reglamentarias, en la adopción de decisiones de gobierno institucional y en la estructuración jurídica de proyectos con impacto territorial y social relevante.",
     "Cuenta con experiencia consolidada en la gestión jurídica de entidades en situación de crisis, incluyendo procesos de liquidación y regímenes especiales de intervención estatal. Su intervención en estos escenarios ha comprendido la conducción jurídica de decisiones administrativas de alta complejidad y la articulación institucional con órganos de inspección, vigilancia y control, orientada a preservar la estabilidad institucional y a contener el riesgo jurídico sistémico.",
     "En el ámbito de la asesoría pública, ha actuado como jefe jurídico y asesor de alto nivel en administraciones territoriales, liderando el control de legalidad de la actuación gubernamental, la estructuración jurídica de planes de desarrollo y la articulación interinstitucional de proyectos de inversión de naturaleza multidisciplinaria.",
     "Su ejercicio profesional se complementa con una actividad académica constante, que aporta una perspectiva doctrinal y de largo plazo a su práctica. Esta aproximación le permite abordar los problemas jurídicos no solo desde la norma vigente, sino desde la evolución histórica y funcional de las instituciones."   
     ],
     expertise: [
-    "Litigio Constitucional & Administrativo de Alta Complejidad",
-    "Gobernanza de Entidades Públicas & Descentralizadas",
-    "Regímenes de Crisis, Reorganización & Liquidación Estatal",
-    "Contratación Estatal & Gestión de Riesgos Públicos",
-    "Protección Internacional de Derechos Humanos"
+    {
+    titulo: "Litigio Constitucional & Administrativo de Alta Complejidad",
+    link: "/areas/publico-y-gobernanza"
+  },
+  {
+    titulo: "Gobernanza de Entidades Públicas & Descentralizadas",
+    link: "/areas/publico-y-gobernanza"
+  },
+  {
+    titulo: "Regímenes de Crisis, Reorganización & Liquidación Estatal",
+    link: "/areas/publico-y-gobernanza"
+  },
+  {
+    titulo: "Contratación Estatal & Gestión de Riesgos Públicos",
+    link: "/areas/publico-y-gobernanza"
+  },
+  {
+    titulo: "Protección Internacional de Derechos Humanos",
+    link: "/areas/internacional-y-movilidad"
+  }
     ],
     academia: [
     { grado: "Abogado", institucion: "Universidad del Cauca" },
@@ -56,11 +71,26 @@ export const socios = {
     "Su ejercicio profesional se apoya en una sólida formación académica en Derecho Empresarial y Derecho Comercial, actualmente profundizada a nivel de maestría. Esta base le permite abordar la gestión jurídica empresarial desde una lógica estructural y preventiva, orientada no solo al cumplimiento normativo, sino a la anticipación de riesgos y a la toma de decisiones informadas en entornos dinámicos."
   ],
   expertise: [
-    "Derecho Societario & Gobierno Corporativo",
-    "Reorganización Empresarial & Procesos de M&A",
-    "Derecho Sanitario & Gestión Médica Institucional",
-    "Cumplimiento Normativo & Gestión Jurídica del Riesgo Sectorial",
-    "Derecho Migratorio & Movilidad Jurídica"
+    {
+    titulo: "Derecho Societario & Gobierno Corporativo",
+    link: "/areas/corporativo-y-control"
+  },
+  {
+    titulo: "Reorganización Empresarial & Procesos de M&A",
+    link: "/areas/corporativo-y-control"
+  },
+  {
+    titulo: "Derecho Sanitario & Gestión Médica Institucional",
+    link: "/areas/sanitario-y-responsabilidad"
+  },
+  {
+    titulo: "Cumplimiento Normativo & Gestión Jurídica del Riesgo Sectorial",
+    link: "/areas/corporativo-y-control"
+  },
+  {
+    titulo: "Derecho Migratorio & Movilidad Jurídica",
+    link: "/areas/internacional-y-movilidad"
+  }
   ],
   academia: [
     { grado: "Abogado", institucion: "Pontificia Universidad Javeriana" },

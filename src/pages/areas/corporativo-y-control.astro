@@ -16,13 +16,17 @@ const relatedAreas = [
 <Layout title={`${titlePart1} & ${titlePart2} | Bahos & Burbano`}>
   <main class="bg-white min-h-screen relative overflow-hidden antialiased">
     
-    <div class="max-w-[1440px] mx-auto px-8 md:px-28 pb-24 relative z-20 pt-16 md:pt-24">
+    <div class="max-w-[1440px] mx-auto px-8 md:px-28 pb-24 relative z-20 pt-12 md:pt-24">
       
-      <div class="grid grid-cols-1 lg:grid-cols-[minmax(280px,32%)_1fr] gap-16 lg:gap-24 items-start">
+      <div class="flex flex-col lg:grid lg:grid-cols-[minmax(280px,32%)_1fr] gap-12 lg:gap-24 items-start relative">
         
-        <aside class="observer-element-area space-y-20 lg:sticky lg:top-10 lg:pt-[242px]" role="complementary">
+        <aside class="observer-element-area grid grid-cols-1 gap-0 lg:gap-0 lg:space-y-20 lg:sticky lg:top-10 lg:pt-[242px] order-2 lg:order-1 w-full pt-0 lg:pt-[242px]" role="complementary">
           
-          <div class="relative z-10 text-left">
+          <div class="block lg:hidden w-full mb-12" aria-hidden="true">
+            <div class="h-[1.5px] w-full bg-gradient-to-r from-transparent via-[var(--color-oro-noble)] to-transparent opacity-70"></div>
+          </div>
+
+          <div class="relative z-10 text-left pt-4 lg:pt-0">
             <p class="pillar-label-museum text-[var(--color-oro-tecnico)] mb-6">Enlace</p>
             
             <a href="/talento/manuel" class="partner-link-minimal group inline-block outline-none" aria-label="Socio responsable: Manuel Burbano">
@@ -33,13 +37,13 @@ const relatedAreas = [
             </a>
           </div>
 
-          <nav class="transversal-nav-minimal relative z-10" aria-label="Otras áreas de práctica">
+          <nav class="transversal-nav-minimal relative z-10 mt-12 lg:mt-20" aria-label="Otras áreas de práctica">
             <p class="pillar-label-museum text-[var(--color-oro-tecnico)] mb-6 text-left">Otras Áreas</p>
-            <ul class="flex flex-col gap-5">
+            <ul class="flex flex-col gap-4">
               {relatedAreas.map((area) => (
                 <li>
                   <a href={area.href} class="nav-link-stela-minimal group block text-left outline-none">
-                    <span class="font-['Hanken_Grotesk'] text-[17px] text-[var(--color-bosque)] group-hover:text-[var(--color-oro-tecnico)] transition-colors duration-500 block">
+                    <span class="font-['Hanken_Grotesk'] text-[16px] md:text-[17px] text-[var(--color-bosque)] group-hover:text-[var(--color-oro-tecnico)] transition-colors duration-500 block">
                       {area.name}
                     </span>
                     <div class="axial-underline-minimal" aria-hidden="true"></div>
@@ -50,23 +54,23 @@ const relatedAreas = [
           </nav>
         </aside>
 
-        <article class="flex flex-col gap-14 md:gap-16 observer-element-area px-4 md:px-0 lg:pr-12" style="transition-delay: 0.3s;">
+        <article class="flex flex-col gap-10 md:gap-16 observer-element-area px-0 lg:pr-12 order-1 lg:order-2 w-full" style="transition-delay: 0.3s;">
           
-          <header class="mb-10 relative text-left">
-            <h1 class="font-['ClashDisplay'] font-bold text-[30px] md:text-[45px] text-[var(--color-bosque)] leading-[1.1] pt-4 tracking-[0.02em] antialiased uppercase">
+          <header class="mb-2 md:mb-10 relative text-left">
+            <h1 class="font-['ClashDisplay'] font-bold text-[32px] md:text-[45px] text-[var(--color-bosque)] leading-[1.1] pt-4 tracking-[0.02em] antialiased uppercase">
               {titlePart1} <br />
               <span class="ampersand-mono-regular">&</span> {titlePart2} <br />
               {titlePart3}
             </h1>
           </header>
 
-          <div class="space-y-12 max-w-3xl">
+          <div class="space-y-8 md:space-y-12 max-w-3xl">
             <p class="hanken-body-text">
               Estructuramos organizaciones, transacciones y relaciones empresariales bajo una lógica de preservación de valor, coherencia normativa y asignación estratégica del riesgo. Nuestra práctica se enfoca en el diseño de arquitecturas societarias capaces de operar en entornos altamente regulados.
             </p>
 
             <p class="hanken-body-text">
-              El compliance se concibe como un pilar autónomo de integridad institucional y gestión del riesgo legal, vinculado a la responsabilidad administrativa y penal de la organización. Mitigamos la exposición sancionatoria y fortalecemos la credibilidad institucional.
+              Concebimos el <span class="italic">compliance</span> como un pilar autónomo de integridad institucional y gestión del riesgo legal, vinculado a la responsabilidad administrativa y penal de la organización. Mitigamos la exposición sancionatoria y fortalecemos la credibilidad institucional.
             </p>
 
             <p class="hanken-body-text">
@@ -115,19 +119,27 @@ const relatedAreas = [
     font-family: 'Hanken Grotesk', sans-serif;
     font-size: clamp(17px, 2vw, 20px);
     color: var(--color-bosque);
-    line-height: 1.8;
+    line-height: 1.6; /* Ajuste móvil para mejor lectura */
     font-weight: 400;
     opacity: 1;
     text-wrap: pretty;
   }
 
+  @media (min-width: 768px) {
+    .hanken-body-text { line-height: 1.8; }
+  }
+
   .pillar-label-museum {
     font-family: 'Hanken Grotesk', sans-serif;
     text-transform: uppercase;
-    letter-spacing: 0.5em; 
+    letter-spacing: 0.3em; /* Ajuste móvil */
     font-weight: 600;
-    font-size: 12px;
+    font-size: 11px;
     line-height: 1;
+  }
+
+  @media (min-width: 768px) {
+    .pillar-label-museum { letter-spacing: 0.5em; font-size: 12px; }
   }
 
   /* --- SISTEMA AXIAL (EFECTO SEDA 1.8s) --- */
@@ -154,12 +166,19 @@ const relatedAreas = [
     width: 80px;
   }
 
+  /* EFECTO SEDA RECALIBRADO */
   .observer-element-area {
     opacity: 0;
-    transform: translate3d(0, 40px, 0);
+    transform: translate3d(0, 30px, 0); /* Menor distancia en móvil para suavidad */
     transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1), 
                 transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform, opacity;
+  }
+
+  @media (min-width: 768px) {
+    .observer-element-area { 
+        transform: translate3d(0, 40px, 0); 
+    }
   }
 
   .observer-element-area.is-visible {
@@ -167,11 +186,9 @@ const relatedAreas = [
     transform: translate3d(0, 0, 0);
   }
 
+  /* Ajustes específicos de layout */
   @media (max-width: 1024px) {
     .lg\:pt-\[242px\] { padding-top: 0; }
-    h1 { font-size: 28px; line-height: 1.2; letter-spacing: 0.01em; }
-    .pillar-label-museum { font-size: 11px; letter-spacing: 0.3em; }
-    .hanken-body-text { font-size: 17px; line-height: 1.7; }
   }
 
   @media (prefers-reduced-motion: reduce) {

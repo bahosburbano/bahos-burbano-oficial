@@ -108,7 +108,7 @@
 <style>
   /* 1. IDENTIDAD Y TIPOGRAFÍA */
   .label-museo-centered {
-    color: var(--color-oro-tecnico); /* Oro técnico para accesibilidad visual */
+    color: var(--color-oro-tecnico);
     font-size: 12px;
     letter-spacing: 0.8em;
     text-transform: uppercase;
@@ -124,6 +124,8 @@
     text-decoration: none; 
     outline: none;
     cursor: pointer;
+    /* HIGIENE VISUAL MÓVIL: Elimina el flash gris al tocar */
+    -webkit-tap-highlight-color: transparent; 
   }
 
   .area-name {
@@ -144,10 +146,10 @@
     padding: 0 0.3rem;
   }
 
-  /* 2. CONTENEDOR DE IMAGEN (Symmetry & Performance) */
+  /* 2. CONTENEDOR DE IMAGEN */
   .image-wrapper {
     width: 100%;
-    aspect-ratio: 3 / 1.1; /* Calibración para un look más panorámico editorial */
+    aspect-ratio: 3 / 1.1;
     overflow: hidden;
     margin-bottom: 2rem;
     background: #FAFAFA;
@@ -167,7 +169,7 @@
     transform: scale(1.05);
   }
 
-  /* 3. BLOQUE 'LEER MÁS' (Higiene de Foco) */
+  /* 3. BLOQUE 'LEER MÁS' (AUDITORÍA SENIOR APLICADA) */
   .content-under { display: flex; flex-direction: column; position: relative; }
   .cta-wrapper { display: flex; justify-content: flex-end; width: 100%; }
 
@@ -180,39 +182,81 @@
     align-items: center;
     gap: 1rem;
     padding: 0.6rem 1.2rem 0.6rem 2.2rem;
+    
+    /* STACKING: Aislamiento para proteger capas internas */
     position: relative;
-    z-index: 1;
+    isolation: isolate; 
+    
+    /* TRANSICIÓN: Solo color, sin aceleración GPU en el padre */
     transition: color 0.4s ease;
+    
+    /* LIMPIEZA TOTAL: No will-change, No backface-visibility aquí */
+    -webkit-font-smoothing: antialiased;
+    white-space: nowrap; 
   }
-
+  
+  /* Barra Verde de Fondo */
   .read-more-box::before {
     content: '';
     position: absolute;
-    top: 0; left: 0;
-    width: 6px;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
     background-color: var(--color-bosque);
+    
+    /* Se va al fondo gracias a 'isolation' */
     z-index: -1;
-    transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+
+    transform: scaleX(0.08); 
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    
+    /* ACELERACIÓN GPU: Permitida solo aquí (sin texto) */
+    will-change: transform; 
   }
 
-  .area-item:hover .read-more-box,
-  .area-item:focus-visible .read-more-box { color: white; }
+  /* --- INTERACCIÓN IPHONE (:active) + PC (:hover) --- */
+  
+  /* 1. Expansión de la barra */
   .area-item:hover .read-more-box::before,
-  .area-item:focus-visible .read-more-box::before { width: 100%; }
-
-  .area-item:focus-visible {
-    outline: 2px solid var(--color-oro-noble);
-    outline-offset: 12px;
+  .area-item:focus-visible .read-more-box::before,
+  .area-item:active .read-more-box::before { 
+    transform: scaleX(1);
   }
 
-  .arrow-svg-stylized { width: 32px; height: 12px; transition: transform 0.4s ease; }
-  .area-item:hover .arrow-svg-stylized { transform: translateX(8px); }
+  /* 2. Cambio de color a blanco */
+  .area-item:hover .read-more-box,
+  .area-item:focus-visible .read-more-box,
+  .area-item:active .read-more-box { 
+    color: white; 
+  }
+
+  /* Limpieza de foco (Sin borde dorado) */
+  .area-item:focus-visible { outline: none; }
+
+  /* FLECHA SVG */
+  .arrow-svg-stylized { 
+    width: 32px; 
+    height: 16px; /* Ajuste geométrico 2:1 */
+    transition: transform 0.4s ease;
+    flex-shrink: 0;
+    
+    /* LIMPIEZA: No backface-visibility */
+    position: relative; 
+    z-index: 2; 
+  }
+  
+  .area-item:hover .arrow-svg-stylized,
+  .area-item:focus-visible .arrow-svg-stylized,
+  .area-item:active .arrow-svg-stylized { 
+    transform: translateX(8px);
+  }
 
   /* 4. ANIMACIONES (EFECTO SEDA) */
   .observer-element {
     opacity: 0;
-    transform: translate3d(0, 40px, 0); /* Glide de 40px para elegancia */
+    transform: translate3d(0, 40px, 0);
     will-change: transform, opacity;
   }
 
@@ -224,7 +268,7 @@
     to { opacity: 1; transform: translate3d(0, 0, 0); }
   }
 
-  /* 5. OPTIMIZACIÓN MÓVIL AL DETALLE */
+  /* 5. OPTIMIZACIÓN MÓVIL */
   @media (max-width: 1024px) {
     .image-wrapper { aspect-ratio: 16 / 9; }
     .area-name { font-size: 10.5px; letter-spacing: 0.25em; padding: 0 1rem; }

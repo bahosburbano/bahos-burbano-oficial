@@ -18,9 +18,6 @@ const navItems = [
   { name: 'Contáctenos', slug: 'contactenos' } 
 ];
 
-// Estilo común para los enlaces (para no repetir código en el render condicional)
-/* Añadimos py-4 (padding vertical) para que el área de clic sea el doble de grande */
-// Variable única y blindada para todos los enlaces del menú
 const navLinkClass = "nav-link text-[13px] tracking-[0.3em] font-medium uppercase text-[var(--color-bosque)] flex items-center gap-1 cursor-pointer py-4 outline-none focus-visible:text-[var(--color-oro-noble)]";
 ---
 
@@ -37,25 +34,16 @@ const navLinkClass = "nav-link text-[13px] tracking-[0.3em] font-medium uppercas
       <div class="relative group">
         
         {item.submenu ? (
-          /* CASO 1: Es un botón de menú con inteligencia para ciegos */
-<a 
-  role="button" 
-  aria-haspopup="true" 
-  aria-expanded="false" 
-  aria-controls="submenu-areas"
-  class={navLinkClass}
-  tabindex="0"
->
-  <span class="relative">
-    {item.name}
-    <span class="underline-gold"></span>
-  </span>
-  <svg class="submenu-arrow w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M20 9l-8 5-8-5h16z" />
-  </svg>
-</a>
+          <a role="button" aria-haspopup="true" aria-expanded="false" class={navLinkClass} tabindex="0">
+            <span class="relative">
+              {item.name}
+              <span class="underline-gold"></span>
+            </span>
+            <svg class="submenu-arrow w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20 9l-8 5-8-5h16z" />
+            </svg>
+          </a>
         ) : (
-          /* CASO 2: Es un enlace normal (Con href) */
           <a href={`/${item.slug}`} class={navLinkClass}>
             <span class="relative">
               {item.name}
@@ -65,17 +53,10 @@ const navLinkClass = "nav-link text-[13px] tracking-[0.3em] font-medium uppercas
         )}
 
         {item.submenu && (
-          <div class="absolute top-full -left-8 pt-6 
-                      pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-focus-within:translate-y-0 
-                      opacity-0 group-hover:opacity-100 
-                      translate-y-2 group-hover:translate-y-0 
-                      transition-all duration-500 ease-out">
+          <div class="absolute top-full -left-8 pt-6 pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-focus-within:translate-y-0 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500 ease-out">
             <div class="bg-[#FFFFFF] shadow-[0_20px_50px_rgba(0,0,0,0.15)] p-8 min-w-[420px] space-y-5">
               {item.submenu.map((sub) => (
-                <a href={sub.url} 
-   class="sub-link block text-[13px] uppercase tracking-[0.2em] text-[var(--color-bosque)] transition-all duration-300 py-2 hover:pl-2" 
-   set:html={sub.name}>
-</a>
+                <a href={sub.url} class="sub-link block text-[13px] uppercase tracking-[0.2em] text-[var(--color-bosque)] transition-all duration-300 py-2 hover:pl-2" set:html={sub.name}></a>
               ))}
             </div>
           </div>
@@ -89,41 +70,82 @@ const navLinkClass = "nav-link text-[13px] tracking-[0.3em] font-medium uppercas
     <span class="w-5 h-[1px] bg-[#0C382E] transition-all duration-500 group-hover:w-8"></span>
   </button>
 
-  <div id="mobile-menu" class="fixed inset-0 bg-white translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] z-40 flex flex-col justify-center px-12">
-    <nav class="flex flex-col gap-6">
-  {navItems.map((item) => (
-    <div class="flex flex-col gap-4">
-      <a href={item.submenu ? undefined : `/${item.slug}`} 
-         class="mobile-nav-link text-[22px] tracking-[0.15em] font-bold uppercase text-[var(--color-bosque)]">
-        {item.name}
-      </a>
-      {item.submenu && (
-        <div class="flex flex-col gap-4 pl-4 border-l border-[var(--color-oro-noble)]/30">
-          {item.submenu.map((sub) => (
-            <a href={sub.url} class="text-[14px] uppercase tracking-[0.2em] text-[var(--color-bosque)]/70" set:html={sub.name} />
-          ))}
+  <div id="mobile-menu" class="fixed inset-0 bg-white translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] z-40 flex flex-col pt-32 px-8 overflow-y-auto">
+    
+    <nav class="flex flex-col gap-8">
+      {navItems.map((item) => (
+        <div class="flex flex-col border-b border-[var(--color-bosque)]/10 pb-4 last:border-none">
+          
+          {/* Lógica: Si tiene submenú, es un botón toggle. Si no, es link normal */}
+          {item.submenu ? (
+            <button class="mobile-accordion-btn flex justify-between items-center w-full text-left group">
+              <span class="text-[15px] tracking-[0.2em] font-bold uppercase text-[var(--color-bosque)] group-hover:text-[var(--color-oro-noble)] transition-colors">
+                {item.name}
+              </span>
+              <svg class="w-4 h-4 text-[var(--color-bosque)] transition-transform duration-300 accordion-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+          ) : (
+            <a href={`/${item.slug}`} class="text-[15px] tracking-[0.2em] font-bold uppercase text-[var(--color-bosque)] hover:text-[var(--color-oro-noble)] transition-colors">
+              {item.name}
+            </a>
+          )}
+
+          {/* Submenú Oculto por defecto (max-h-0) */}
+          {item.submenu && (
+            <div class="mobile-submenu grid grid-rows-[0fr] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]">
+              <div class="overflow-hidden">
+                <div class="flex flex-col gap-5 pt-6 pl-2">
+                  {item.submenu.map((sub) => (
+                    <a href={sub.url} class="text-[11px] uppercase tracking-[0.15em] text-[var(--color-bosque)]/80 leading-relaxed hover:text-[var(--color-oro-noble)]" set:html={sub.name} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
-      )}
+      ))}
+    </nav>
+
+    <div class="mt-auto mb-12 flex flex-col items-center opacity-0 translate-y-4 transition-all duration-700 delay-300" id="mobile-footer-signature">
+      <a href="/" aria-label="Volver al inicio" class="flex items-baseline text-[var(--color-bosque)] mb-3 hover:opacity-70 transition-opacity duration-300">
+        <span class="font-clash font-semibold text-[20px] leading-none tracking-[0.25em]">Bahos</span>
+        <span class="font-mono font-bold text-[20px] leading-none mx-2">&</span>
+        <span class="font-clash font-semibold text-[20px] leading-none tracking-[0.25em]">Burbano</span>
+      </a>
+      <p class="text-[var(--color-oro-tecnico)] text-[9px] uppercase tracking-[0.4em] font-medium text-center">
+        DERECHO | EMPRESA | ESTADO
+      </p>
     </div>
-  ))}
-</nav>
+
   </div>
 
 </header>
 
 <script>
-const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
+  const signature = document.getElementById('mobile-footer-signature');
   const body = document.body;
   let isMenuOpen = false;
 
-  // 1. LÓGICA DEL MENÚ MÓVIL
+  // 1. APERTURA/CIERRE MENÚ
   mobileBtn?.addEventListener('click', () => {
     isMenuOpen = !isMenuOpen;
     mobileMenu?.classList.toggle('translate-x-full');
     mobileMenu?.classList.toggle('translate-x-0');
+    
+    // Animación de la firma al abrir
+    if (isMenuOpen) {
+      signature?.classList.remove('opacity-0', 'translate-y-4');
+    } else {
+      signature?.classList.add('opacity-0', 'translate-y-4');
+    }
+
     body.style.overflow = isMenuOpen ? 'hidden' : '';
 
+    // Animación del ícono hamburguesa
     const lines = mobileBtn.querySelectorAll('span');
     if (isMenuOpen) {
       lines[0].style.transform = 'translateY(4.5px) rotate(45deg)';
@@ -136,24 +158,42 @@ const mobileBtn = document.getElementById('mobile-menu-btn');
     }
   });
 
-  // 2. INTELIGENCIA DE SUBMENÚS (Desktop & Accesibilidad)
+  // 2. LÓGICA ACORDEÓN (ÁREAS DE PRÁCTICA)
+  const accordionBtns = document.querySelectorAll('.mobile-accordion-btn');
+
+  accordionBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const submenu = btn.nextElementSibling as HTMLElement;
+      const icon = btn.querySelector('.accordion-icon') as HTMLElement;
+
+      // Toggle del grid (0fr a 1fr)
+      if (submenu.classList.contains('grid-rows-[1fr]')) {
+        submenu.classList.remove('grid-rows-[1fr]');
+        submenu.classList.add('grid-rows-[0fr]');
+        icon.style.transform = 'rotate(0deg)';
+        btn.classList.remove('text-[var(--color-oro-noble)]');
+      } else {
+        // Cierra otros abiertos (Opcional, para elegancia)
+        document.querySelectorAll('.mobile-submenu').forEach(el => {
+            el.classList.remove('grid-rows-[1fr]');
+            el.classList.add('grid-rows-[0fr]');
+        });
+        document.querySelectorAll('.accordion-icon').forEach(el => {
+            (el as HTMLElement).style.transform = 'rotate(0deg)';
+        });
+
+        submenu.classList.remove('grid-rows-[0fr]');
+        submenu.classList.add('grid-rows-[1fr]');
+        icon.style.transform = 'rotate(180deg)';
+        btn.classList.add('text-[var(--color-oro-noble)]');
+      }
+    });
+  });
+
+  // 3. INTELIGENCIA SUBMENÚS DESKTOP
   const menuButtons = document.querySelectorAll('a[role="button"]');
-
   menuButtons.forEach(button => {
-    // Evita que el click recargue la página
     button.addEventListener('click', e => e.preventDefault());
-
-    const groupContainer = button.closest('.group');
-
-    if (groupContainer) {
-      // Eventos de Mouse (Para el estado visual y ARIA)
-      groupContainer.addEventListener('mouseenter', () => button.setAttribute('aria-expanded', 'true'));
-      groupContainer.addEventListener('mouseleave', () => button.setAttribute('aria-expanded', 'false'));
-      
-      // Eventos de Teclado (Para usuarios con discapacidad)
-      button.addEventListener('focus', () => button.setAttribute('aria-expanded', 'true'));
-      button.addEventListener('blur', () => button.setAttribute('aria-expanded', 'false'));
-    }
   });
 </script>
 
@@ -166,32 +206,22 @@ const mobileBtn = document.getElementById('mobile-menu-btn');
 </style>
 
 <style>
-  /* CORRECCIÓN 2: Eliminado will-change permanente para evitar flickering en GPU */
+  /* Header Base */
   #main-header {
-    transition-property: background-color, box-shadow;
-    transition-duration: 0.4s;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.4s, box-shadow 0.4s;
   }
 
-  nav { 
-    font-family: 'ClashDisplay', sans-serif; 
-  }
+  nav { font-family: 'ClashDisplay', sans-serif; }
 
+  /* Desktop Links */
   .nav-link {
-  transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  /* Asegura que el área de la manito sea total */
-  display: flex; 
-  align-items: center;
-}
+    transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex; 
+    align-items: center;
+  }
+  .group:hover .nav-link { color: var(--color-oro-noble); }
 
-/* El color cambia cuando el cursor entra al grupo, no solo al texto */
-.group:hover .nav-link {
-  color: var(--color-oro-noble);
-}
-
+  /* Línea dorada animada */
   .underline-gold {
     content: '';
     position: absolute;
@@ -203,44 +233,23 @@ const mobileBtn = document.getElementById('mobile-menu-btn');
     opacity: 0.9;
     transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1), left 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
+  .group:hover .underline-gold { width: 100%; left: 0; }
 
-  .group:hover .underline-gold {
-    width: 100%;
-    left: 0;
-  }
-
+  /* Flecha Desktop */
   .submenu-arrow {
     color: #0C382E;
     opacity: 0.8;
     margin-top: 1px;
     margin-left: -2px;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.4s, color 0.4s;
   }
+  .group:hover .submenu-arrow { opacity: 1; transform: rotate(180deg); color: var(--color-oro-noble); }
 
-  .group:hover .submenu-arrow {
-    opacity: 1;
-    transform: rotate(180deg);
-    color: var(--color-oro-noble);
-  }
-
+  /* Sublinks Desktop */
   .sub-link:hover {
     color: var(--color-oro-noble) !important;
     transform: translateX(4px);
   }
-
-  .mobile-nav-link {
-    font-family: 'ClashDisplay', sans-serif;
-    transition: color 0.4s ease, padding-left 0.4s ease;
-    padding-bottom: 1rem;
-  }
-
-  .mobile-nav-link:hover {
-    color: var(--color-oro-noble);
-    padding-left: 10px;
-  }
   
-  #mobile-menu-btn {
-    position: relative;
-    z-index: 100;
-  }
+  #mobile-menu-btn { position: relative; z-index: 100; }
 </style>
