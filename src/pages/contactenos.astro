@@ -244,17 +244,31 @@ const contactDescription = "Protocolo de Consulta para el suministro de informac
 
 <script is:inline>
   const form = document.getElementById('protocolo-form');
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
     const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
 
-    // Enviamos los datos a Make y a Formspree al tiempo
-    await Promise.all([
-      fetch("https://formspree.io/f/mojwojbq", { method: 'POST', body: formData, headers: {'Accept': 'application/json'} }),
-      fetch("https://hook.us2.make.com/h6q7s5xcfeyoup1dx3idiwzbqv99lvb3", { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data) })
-    ]);
+    try {
+      await Promise.all([
+        fetch("https://formspree.io/f/mojwojbq", {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        }),
+        fetch("https://hook.us2.make.com/h6q7s5xcfeyoup1dx3idiwzbqv99lvb3", {
+          method: 'POST',
+          body: formData
+        })
+      ]);
 
-    window.location.href = "/confirmacion"; // Redirigimos a la página de éxito
+      // SOLO si ambos envíos funcionan
+      window.location.href = "/confirmacion";
+
+    } catch (error) {
+      console.error("Error enviando el formulario:", error);
+      alert("Ocurrió un error al enviar el formulario. Intente nuevamente.");
+    }
   });
 </script>

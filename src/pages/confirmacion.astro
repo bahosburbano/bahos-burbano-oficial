@@ -1,4 +1,5 @@
 ---
+export const prerender = true;
 import Layout from '../layouts/Layout.astro';
 ---
 
@@ -46,7 +47,7 @@ import Layout from '../layouts/Layout.astro';
     transform: translateY(-50%);
     font-family: 'B612 Mono', monospace;
     font-size: 95vh; 
-    color: #0C382E; /* Cambio a código HEX directo para evitar errores de carga */
+    color: #0C382E; 
     opacity: 0.025; 
     line-height: 1;
     z-index: 0;
@@ -75,10 +76,11 @@ import Layout from '../layouts/Layout.astro';
     h1 {
       letter-spacing: 0.08em;
       font-size: 19px;
-    }
-    /* El word-spacing se maneja mejor aquí para móviles */
-    h1 {
       word-spacing: 0.2em !important;
+    }
+    p {
+      font-size: 14px;
+      line-height: 1.6;
     }
   }
 </style>
