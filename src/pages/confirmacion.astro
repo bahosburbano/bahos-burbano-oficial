@@ -11,25 +11,25 @@ import Layout from '../layouts/Layout.astro';
 
     <div class="max-w-[1200px] mx-auto px-6 text-center relative z-10">
       <div class="reveal-sharp">
-        <span class="font-['Hanken_Grotesk'] text-[10px] tracking-[0.5em] uppercase text-[var(--color-oro-noble)] font-bold mb-3 block antialiased opacity-90">
+        <span class="font-['Hanken_Grotesk'] text-[10px] tracking-[0.5em] uppercase text-[#B8944F] font-bold mb-3 block antialiased opacity-90">
           Sistema de Recepción Oficial
         </span>
         
         <h1 
-          class="font-['ClashDisplay'] text-[24px] md:text-[36px] font-bold text-[var(--color-bosque)] tracking-[0.10em] md:tracking-[0.14em] leading-[1.2] uppercase mb-10 antialiased"
+          class="font-['ClashDisplay'] text-[24px] md:text-[36px] font-bold text-[#0C382E] tracking-[0.10em] md:tracking-[0.14em] leading-[1.2] uppercase mb-10 antialiased"
           style="word-spacing: 0.6em;"
         >
           Protocolo Registrado con Éxito
         </h1>
 
-        <div class="w-12 h-[1px] bg-[var(--color-oro-noble)]/30 mx-auto mb-10"></div>
+        <div class="w-12 h-[1px] bg-[#B8944F]/30 mx-auto mb-10"></div>
 
-        <p class="font-['Hanken_Grotesk'] text-[15px] md:text-[17px] text-[var(--color-bosque)] leading-[1.8] tracking-[0.03em] opacity-70 mb-14 max-w-xl mx-auto font-light antialiased">
+        <p class="font-['Hanken_Grotesk'] text-[15px] md:text-[17px] text-[#0C382E] leading-[1.8] tracking-[0.03em] opacity-70 mb-14 max-w-xl mx-auto font-light antialiased">
           Su información ha sido integrada a nuestro sistema bajo estrictos protocolos de confidencialidad. Un miembro de nuestro equipo jurídico analizará su consulta y se comunicará con usted a la brevedad posible.
         </p>
 
         <nav aria-label="Navegación de retorno">
-          <a href="/" class="inline-block py-5 px-12 border border-[var(--color-bosque)]/20 text-[10px] tracking-[0.6em] uppercase text-[var(--color-bosque)] hover:bg-[var(--color-bosque)] hover:text-white transition-all duration-700 font-bold focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-oro-noble)]">
+          <a href="/" class="inline-block py-5 px-12 border border-[#0C382E]/20 text-[10px] tracking-[0.6em] uppercase text-[#0C382E] hover:bg-[#0C382E] hover:text-white transition-all duration-700 font-bold focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B8944F]">
             Volver al Inicio
           </a>
         </nav>
@@ -46,7 +46,7 @@ import Layout from '../layouts/Layout.astro';
     transform: translateY(-50%);
     font-family: 'B612 Mono', monospace;
     font-size: 95vh; 
-    color: var(--color-bosque);
+    color: #0C382E; /* Cambio a código HEX directo para evitar errores de carga */
     opacity: 0.025; 
     line-height: 1;
     z-index: 0;
@@ -74,20 +74,11 @@ import Layout from '../layouts/Layout.astro';
     }
     h1 {
       letter-spacing: 0.08em;
-      word-spacing: 0.2em !important; 
       font-size: 19px;
     }
-    p {
-        font-size: 14px;
-        line-height: 1.6;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .reveal-sharp {
-      animation: none;
-      opacity: 1;
-      transform: none;
+    /* El word-spacing se maneja mejor aquí para móviles */
+    h1 {
+      word-spacing: 0.2em !important;
     }
   }
 </style>
