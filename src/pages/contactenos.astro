@@ -15,7 +15,7 @@ const contactDescription = "Protocolo de Consulta para el suministro de informac
   title={`${titleText} | ${firmName}`}
   description={contactDescription}
 >
-  <a href="#protocolo-form" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-[var(--color-oro-noble)] focus:text-[var(--color-bosque)] focus:p-4">
+  <a href="#protocolo-form" class="sr-only-skip focus:not-sr-only focus:absolute focus:z-50 focus:bg-[var(--color-oro-noble)] focus:text-[var(--color-bosque)] focus:p-4">
     Saltar al formulario de consulta
   </a>
 
@@ -93,7 +93,7 @@ const contactDescription = "Protocolo de Consulta para el suministro de informac
               <p class="pillar-label-museum text-[var(--color-oro-noble)]">Suministro de Información Confidencial</p>
             </div>
 
-            <form id="protocolo-form" class="space-y-12" aria-label="Formulario de contacto confidencial"></form>
+            <form id="protocolo-form" class="space-y-12" aria-label="Formulario de contacto confidencial">
               <fieldset class="border-none p-0 m-0 space-y-12">
                 <legend class="sr-only">Información de la consulta</legend>
                 
@@ -104,7 +104,7 @@ const contactDescription = "Protocolo de Consulta para el suministro de informac
 
                 <div class="group relative">
                   <label for="full-name" class="form-label">Nombre o Razón Social</label>
-                  <input id="full-name" type="text" name="Nombre_Consultante" required aria-required="true" class="form-input" placeholder="Identidad del consultante..." />
+                  <input id="full-name" type="text" name="Nombre_del_Consultante" required aria-required="true" class="form-input" placeholder="Identidad del consultante..." />
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -126,7 +126,7 @@ const contactDescription = "Protocolo de Consulta para el suministro de informac
 
                 <div class="group relative">
                   <label for="consult-message" class="form-label">Resumen del Asunto</label>
-                  <textarea id="consult-message" name="message" rows="4" required aria-required="true" class="form-input resize-none" placeholder="Describa su consulta..."></textarea>
+                  <textarea id="consult-message" name="Detalles_de_la_Consulta" rows="4" required aria-required="true" class="form-input resize-none" placeholder="Describa su consulta..."></textarea>
                 </div>
               </fieldset>
 
