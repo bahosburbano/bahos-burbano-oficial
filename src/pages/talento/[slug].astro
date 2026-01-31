@@ -30,15 +30,16 @@ const whatsappPhone = socio.contacto.telefono.replace(/\+/g, '').replace(/\s/g, 
         <div class="lg:col-span-4 bg-white pt-0 px-8 pb-8 md:px-10 md:pb-10 fade-in">
           <figure class="aspect-[3/4] w-full bg-[#F4F4F4] overflow-hidden grayscale contrast-[1.05] mb-8">
             <img
-              src={socio.imagen}
-              width="600"
-              height="800"
-              alt={`Retrato profesional de ${socio.nombre}, ${socio.cargo} en la firma`}
-              class="w-full h-full object-cover"
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-            />
+  src={socio.imagen}
+  width="600"
+  height="800"
+  alt={`Retrato oficial de ${socio.nombre}, especialista en derecho y socio de la firma Bahos & Burbano`}
+  title={`Abogado ${socio.nombre} | Bahos & Burbano`}
+  class="w-full h-full object-cover"
+  loading="eager"
+  fetchpriority="high"
+  decoding="async"
+/>
             <figcaption class="sr-only">Socio {socio.nombre}</figcaption>
           </figure>
 
@@ -163,6 +164,25 @@ const whatsappPhone = socio.contacto.telefono.replace(/\+/g, '').replace(/\s/g, 
       </div>
     </div>
   </main>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Attorney",
+  "name": socio.nombre,
+  "memberOf": {
+    "@type": "LegalService",
+    "name": "Bahos & Burbano"
+  },
+  "jobTitle": socio.cargo,
+  "image": socio.imagen,
+  "url": `https://www.bahosburbano.com/talento/${slug}`,
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Santiago de Cali",
+    "addressRegion": "Valle del Cauca",
+    "addressCountry": "CO"
+  }
+})}>
+</script>
 </Layout>
 
 <style>

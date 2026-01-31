@@ -93,7 +93,7 @@ const contactDescription = "Protocolo de Consulta para el suministro de informac
               <p class="pillar-label-museum text-[var(--color-oro-noble)]">Suministro de Información Confidencial</p>
             </div>
 
-            <form id="protocolo-form" action="https://formspree.io/f/mojwojbq" method="POST" class="space-y-12" aria-label="Formulario de contacto confidencial">
+            <form id="protocolo-form" class="space-y-12" aria-label="Formulario de contacto confidencial"></form>
               <fieldset class="border-none p-0 m-0 space-y-12">
                 <legend class="sr-only">Información de la consulta</legend>
                 
@@ -104,17 +104,17 @@ const contactDescription = "Protocolo de Consulta para el suministro de informac
 
                 <div class="group relative">
                   <label for="full-name" class="form-label">Nombre o Razón Social</label>
-                  <input id="full-name" type="text" name="name" required aria-required="true" class="form-input" placeholder="Identidad del consultante..." />
+                  <input id="full-name" type="text" name="Nombre_Consultante" required aria-required="true" class="form-input" placeholder="Identidad del consultante..." />
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                   <div class="group relative">
                     <label for="reply-email" class="form-label">Canal de Respuesta</label>
-                    <input id="reply-email" type="email" name="email" required aria-required="true" class="form-input" placeholder="email@entidad.com" />
+                    <input id="reply-email" type="email" name="Correo_Electrónico" required aria-required="true" class="form-input" placeholder="email@entidad.com" />
                   </div>
                   <div class="group relative">
                     <label for="intervention-area" class="form-label">Área de Intervención</label>
-                    <select id="intervention-area" name="subject" class="form-input appearance-none cursor-pointer">
+                    <select id="intervention-area" name="Área_Intervención" class="form-input appearance-none cursor-pointer">
                       <option value="publico">Derecho Público</option>
                       <option value="corporativo">Derecho Corporativo</option>
                       <option value="sanitario">Derecho Sanitario</option>
@@ -241,3 +241,20 @@ const contactDescription = "Protocolo de Consulta para el suministro de informac
     }
   }
 </style>
+
+<script is:inline>
+  const form = document.getElementById('protocolo-form');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    // Enviamos los datos a Make y a Formspree al tiempo
+    await Promise.all([
+      fetch("https://formspree.io/f/mojwojbq", { method: 'POST', body: formData, headers: {'Accept': 'application/json'} }),
+      fetch("https://hook.us2.make.com/h6q7s5xcfeyoup1dx3idiwzbqv99lvb3", { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data) })
+    ]);
+
+    window.location.href = "/confirmacion"; // Redirigimos a la página de éxito
+  });
+</script>

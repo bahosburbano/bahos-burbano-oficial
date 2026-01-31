@@ -45,12 +45,13 @@ const sociosProcesados = listaSocios;
               
               <div class="w-[180px] md:w-[230px] aspect-[4/5] md:aspect-[3/4] bg-[#F8F8F8] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-1000 relative border border-[var(--color-bosque)]/5">
                 <img
-                  src={socio.foto}
-                  alt={socio.nombre}
-                  class="w-full h-full object-cover transition-transform duration-[2.5s] ease-out group-hover:scale-105 antialiased"
-                  loading="eager"
-                  decoding="async"
-                />
+  src={socio.foto}
+  alt={`Abogado ${socio.nombre} | Socio de la firma Bahos & Burbano - Capital Intelectual`}
+  title={`${socio.nombre} - ${socio.cargo}`}
+  class="w-full h-full object-cover transition-transform duration-[2.5s] ease-out group-hover:scale-105 antialiased"
+  loading="eager"
+  decoding="async"
+/>
               </div>
 
               <div class="mt-8 flex flex-col items-center gap-4 w-full">
