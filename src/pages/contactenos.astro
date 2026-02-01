@@ -248,42 +248,47 @@ const contactDescription = "Protocolo de Consulta para el suministro de informac
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    // Feedback visual inmediato
+    // Feedback visual
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerText;
-    submitBtn.innerText = "ENVIANDO..."; 
+    submitBtn.innerText = "ENVIANDO...";
     submitBtn.style.opacity = "0.7";
     submitBtn.disabled = true;
 
+    // ⭐ TRUCO DE MAGIA: Convertir FormData a JSON puro
     const formData = new FormData(form);
+    const data = {};
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
 
     try {
-      // 1. MAKE (El envío "fantasma")
-      // Sin 'no-cors' para que lleven datos.
-      // Con 'keepalive' para que no se corte al cambiar de página.
+      // 1. MAKE.COM (Enviando JSON limpio)
       fetch("https://hook.us2.make.com/h6q7s5xcfeyoup1dx3idiwzbqv99lvb3", {
-        method: 'POST',
-        body: formData,
-        keepalive: true // <--- ESTA ES LA CLAVE DE SEGURIDAD
-      }).catch(err => console.log("Enviado a Make (Error de respuesta ignorado intencionalmente)"));
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',  // <--- Esto es lo que le gusta a Make
+          },
+          body: JSON.stringify(data)  // <--- Los datos van ordenados
+        }).catch(err => console.log("Enviado a Make"));
 
-      // 2. FORMSPREE (El que redirige)
-      const response = await fetch("https://formspree.io/f/mojwojbq", {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      });
+      // 2. FORMSPREE (Sigue igual, le gusta FormData)
+      const formspreeResponse = await fetch("https://formspree.io/f/mojwojbq", {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        }
+      );
 
-      if (response.ok) {
+      if (formspreeResponse.ok) {
         window.location.href = "/confirmacion";
       } else {
         throw new Error("Error en Formspree");
       }
 
     } catch (error) {
-      console.error(error);
-      alert("Hubo un inconveniente al enviar. Por favor intente nuevamente.");
-      // Restaurar botón si falla Formspree
+      console.error("Error:", error);
+      alert("Hubo un inconveniente. Intente nuevamente.");
       submitBtn.innerText = originalText;
       submitBtn.disabled = false;
       submitBtn.style.opacity = "1";
