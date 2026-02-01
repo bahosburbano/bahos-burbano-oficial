@@ -265,6 +265,7 @@ const contactDescription = "Protocolo de Consulta para el suministro de informac
       fetch("https://hook.us2.make.com/h6q7s5xcfeyoup1dx3idiwzbqv99lvb3", {
         method: 'POST',
         body: formData
+        mode: 'no-cors'
       }).catch(err => console.log("Make procesado en segundo plano"));
 
       // 3. ENVÍO CRÍTICO A FORMSPREE (Para la firma)
