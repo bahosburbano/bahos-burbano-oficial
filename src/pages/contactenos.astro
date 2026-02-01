@@ -243,55 +243,48 @@ const contactDescription = "Protocolo de Consulta para el suministro de informac
 </style>
 
 <script is:inline>
-  const form = document.getElementById('protocolo-form');
+const form = document.getElementById('protocolo-form');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const originalText = submitBtn.innerText;
+  submitBtn.innerText = "ENVIANDO...";
+  submitBtn.disabled = true;
+  submitBtn.style.opacity = "0.7";
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    // Feedback visual
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerText;
-    submitBtn.innerText = "ENVIANDO...";
-    submitBtn.style.opacity = "0.7";
-    submitBtn.disabled = true;
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData); 
 
-    // ⭐ TRUCO DE MAGIA: Convertir FormData a JSON puro
-    const formData = new FormData(form);
-    const data = {};
-    formData.forEach((value, key) => {
-      data[key] = value;
+  // 🔧 LIMPIEZA CRÍTICA: Elimina corchetes o paréntesis que se cuelen
+  if (data['Correo_Electrónico']) {
+    data['Correo_Electrónico'] = data['Correo_Electrónico'].replace(/[\[\]\(\)\*\#\+\-\{\}\\]/g, '');
+  }
+
+  try {
+    // 1. Envío a Make.com (JSON Limpio)
+    await fetch("https://hook.us2.make.com/h6q7s5xcfeyoup1dx3idiwzbqv99lvb3", {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
     });
 
-    try {
-      // 1. MAKE.COM (Enviando JSON limpio)
-      fetch("https://hook.us2.make.com/h6q7s5xcfeyoup1dx3idiwzbqv99lvb3", {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',  // <--- Esto es lo que le gusta a Make
-          },
-          body: JSON.stringify(data)  // <--- Los datos van ordenados
-        }).catch(err => console.log("Enviado a Make"));
+    // 2. Formspree Backup
+    await fetch("https://formspree.io/f/mojwojbq", {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
 
-      // 2. FORMSPREE (Sigue igual, le gusta FormData)
-      const formspreeResponse = await fetch("https://formspree.io/f/mojwojbq", {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        }
-      );
-
-      if (formspreeResponse.ok) {
-        window.location.href = "/confirmacion";
-      } else {
-        throw new Error("Error en Formspree");
-      }
-
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Hubo un inconveniente. Intente nuevamente.");
-      submitBtn.innerText = originalText;
-      submitBtn.disabled = false;
-      submitBtn.style.opacity = "1";
-    }
-  });
+    window.location.href = "/confirmacion";
+      
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Error. Use el correo info@bahosburbano.com directamente.");
+  } finally {
+    submitBtn.innerText = originalText;
+    submitBtn.disabled = false;
+    submitBtn.style.opacity = "1";
+  }
+});
 </script>
